@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
+import Parser from "./classes/Parser";
 
-
+const P = new Parser();
 
 export default class DeskBuilder extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            textNameEnglish: '',
+            textNameEnglish: this.props.textName,
             textNameHebrew: '',
             textEnglish: '',
             textHebrew: ''
@@ -15,15 +16,16 @@ export default class DeskBuilder extends Component {
     }
 
     componentDidMount(){
-        this.getText();
+        this.getText(this.props.textName);
     }
 
-    getText(){
-        fetch('http://www.sefaria.org/api/texts/Kohelet.5')
+    getText(textName){
+        let fetchString = 'http://www.sefaria.org/api/texts/' + textName;
+        fetch(fetchString)
             .then((response) => {
                 return response.json();
-            })
-            .then((data) => {
+            }).then((data) => {
+                data['text'] = P.cleanText(data.text);
                 this.setState(
                     {
                         textNameEnglish: data.book,

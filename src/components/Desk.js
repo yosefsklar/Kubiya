@@ -2,17 +2,16 @@ import React, {Component} from 'react';
 import Text from './Text';
 
 
-export default class DeskBuilder extends Component {
+const DeskBuilder = (props) => {
+
+    let textCompArray = props.userTexts.map( (text,i) => <Text key={i} textName={text}/>);
 
 
-    render() {
-        return (
-            <div>
-                <Text></Text>
-                <Text></Text>
-                <Text></Text>
-                <Text></Text>
-            </div>
-        )
-    }
+    return (
+        <div>
+            {textCompArray}
+        </div>
+    )
 }
+
+export default DeskBuilder

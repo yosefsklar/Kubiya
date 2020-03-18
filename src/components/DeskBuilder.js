@@ -3,10 +3,12 @@ import Desk from './Desk';
 
 
 export default class DeskBuilder extends Component {
-
+    state = {
+        userTexts: ['Kohelet.5']
+    }
     render() {
         return (
-            <Desk></Desk>
+            <Desk userTexts={this.state.userTexts}/>
         )
     }
 }
