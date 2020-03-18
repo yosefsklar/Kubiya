@@ -3,7 +3,7 @@ import Parser from "./classes/Parser";
 
 const P = new Parser();
 
-export default class DeskBuilder extends Component {
+export default class TextBox extends Component {
     constructor(props) {
         super(props);
         this.state = {

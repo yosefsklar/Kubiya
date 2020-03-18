@@ -1,12 +1,12 @@
 import React from 'react';
-import DeskBuilder from './components/DeskBuilder';
+import MatchingGame from './components/MatchingGame';
 
 
 
 function App() {
   return (
     <div className="App">
-        <DeskBuilder/>
+        <MatchingGame/>
     </div>
   );
 }
