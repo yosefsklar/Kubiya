@@ -20,8 +20,19 @@ export default class MatchingRound extends Component {
 
     componentDidMount(){
         this.getTextInfo(this.props.userTexts);
-
     }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+        if (this.props.userTexts !== prevProps.userTexts) {
+            this.getTextInfo(this.props.userTexts);
+        }
+        console.log("component did update");
+    }
+
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     this.getTextInfo(this.props.userTexts);
+    // }
 
     getTextInfo(textInfoArray){
         let textInfos = []
@@ -38,13 +49,11 @@ export default class MatchingRound extends Component {
                     return response.json();
                 }).then((data) => {
                     data['text'] = P.cleanText(data.text);
-                    console.log(data);
                     let vn = this.chooseRandomVerse(data.text);
                     textInfos.push(new TextInfo(data.indexTitle,data.heTitle, data.he[vn], data.text[vn]));
                     this.setState({
                         textInfos: textInfos
                     });
-                    console.log(this.state.textInfos)
                 });
         })
         let labels = [];
@@ -55,8 +64,9 @@ export default class MatchingRound extends Component {
                     return response.json();
                 }).then((data) => {
                     data['text'] = P.cleanText(data.text);
-                    console.log(data);
-                    labels.push(new Label(data.indexTitle,data.heTitle));
+                   // console.log(data);
+                    let correct = (textName == textInfoArray[0]);
+                    labels.push(new Label(data.indexTitle,data.heTitle, correct));
                     this.setState({
                         labels: labels
                     });
@@ -75,14 +85,20 @@ export default class MatchingRound extends Component {
     }
 
     render(){
-        console.log("render");
+        console.log("this rerenders first text ");
+        console.log(this.state.textInfos);
+        console.log("this rerenders first label ");
+        console.log(this.state.labels);
+
         let textCompArray = [];
         let labelCompArray = [];
         if(this.state.textInfos.length > 0) {
             textCompArray = this.state.textInfos.map((text, i) => <TextBox key={i} textEnglish={text.textEnglish}
                                                                            textHebrew={text.textHebrew}/>);
             labelCompArray = this.state.labels.map((label, i) => <LabelBox key={i} textNameEnglish={label.textNameEnglish}
-                                                                             textNameHebrew={label.textNameHebrew}/>);
+                                                                           textNameHebrew={label.textNameHebrew}
+                                                                           correct={label.correct}
+                                                                           resetRoundHandler={this.props.resetRoundHandler}/>);
         }
 
     return (
@@ -109,9 +125,10 @@ class TextInfo {
 }
 
 class Label{
-    constructor(textNameEnglish, textNameHebrew){
+    constructor(textNameEnglish, textNameHebrew, correct){
         this.textNameEnglish = textNameEnglish;
         this.textNameHebrew = textNameHebrew;
+        this.correct = correct;
     }
 }
 

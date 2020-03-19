@@ -14,10 +14,11 @@ export default class LabelBox extends Component {
 
     render() {
         return (
-            <div className={'col-sm ' + classes.Label}>
+            <div className={'col-sm '}>
+                <button className={classes.Label} onClick={this.props.resetRoundHandler}>
                 <h1>{this.state.textNameHebrew}</h1>
                 <h1>{this.state.textNameEnglish}</h1>
-
+                </button>
             </div>
 
         )

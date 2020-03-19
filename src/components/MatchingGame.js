@@ -18,6 +18,7 @@ export default class MatchingGame extends Component {
         }
     }
     componentDidMount() {
+
     }
 
     selectRandomTexts(num, textArr){
@@ -31,11 +32,24 @@ export default class MatchingGame extends Component {
         console.log("Pre-Selected " + newUserTexts);
         return newUserTexts;
     }
+
+    //reset texts, will need to reset clock
+    resetRoundHandler = () =>{
+        //window.alert("hi");
+        this.userTexts = this.selectRandomTexts(3, tanakhTexts);
+        console.log("After Click " + this.userTexts);
+        this.setState({
+            userTexts : this.userTexts
+        }, () => {
+            console.log("Post Click state" + this.state.userTexts);
+        });
+    }
     render() {
         return (
             <div>
                 <Navbar/>
-                <MatchingRound userTexts={this.state.userTexts}/>
+                <MatchingRound userTexts={this.state.userTexts}
+                                resetRoundHandler={this.resetRoundHandler}/>
             </div>
         )
     }

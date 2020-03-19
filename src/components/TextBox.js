@@ -7,7 +7,8 @@ export default class TextBox extends Component {
         super(props);
         this.state = {
             textEnglish: this.props.textEnglish,
-            textHebrew: this.props.textHebrew
+            textHebrew: this.props.textHebrew,
+            correct: this.props.correct
         };
 
     }
