@@ -11,7 +11,8 @@ export default class MatchingRound extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            textInfos: []
+            textInfos: [],
+            labels: []
         };
     }
 
@@ -24,7 +25,11 @@ export default class MatchingRound extends Component {
 
     getTextInfo(textInfoArray){
         let textInfos = []
-        textInfoArray.map(textName =>{
+        let singleTextInfoArray = [];
+        for(let i = 0; i < textInfoArray.length; i++){
+            singleTextInfoArray.push(textInfoArray[0]);
+        }
+        singleTextInfoArray.map(textName =>{
             let subtextNumber = this.chooseRandomSubtext(textName,tanakhTextsChapters);
             console.log(textName +  ' . ' + subtextNumber);
             let fetchString = 'http://www.sefaria.org/api/texts/' + textName + '.' + subtextNumber;
@@ -41,7 +46,21 @@ export default class MatchingRound extends Component {
                     console.log(this.state.textInfos)
                 });
         })
-
+        let labels = [];
+        textInfoArray.map(textName => {
+            let fetchString = 'http://www.sefaria.org/api/texts/' + textName;
+            return fetch(fetchString)
+                .then((response) => {
+                    return response.json();
+                }).then((data) => {
+                    data['text'] = P.cleanText(data.text);
+                    console.log(data);
+                    labels.push(new Label(data.indexTitle,data.heTitle));
+                    this.setState({
+                        labels: labels
+                    });
+                });
+        });
     }
 
     chooseRandomSubtext(textName, textDict){
@@ -55,8 +74,8 @@ export default class MatchingRound extends Component {
         if(this.state.textInfos.length > 0) {
             textCompArray = this.state.textInfos.map((text, i) => <TextBox key={i} textEnglish={text.textEnglish}
                                                                            textHebrew={text.textHebrew}/>);
-            labelCompArray = this.state.textInfos.map((text, i) => <LabelBox key={i} textNameEnglish={text.textNameEnglish}
-                                                                             textNameHebrew={text.textNameHebrew}/>);
+            labelCompArray = this.state.labels.map((label, i) => <LabelBox key={i} textNameEnglish={label.textNameEnglish}
+                                                                             textNameHebrew={label.textNameHebrew}/>);
         }
 
     return (
@@ -79,7 +98,13 @@ class TextInfo {
         this.textHebrew = textHebrew;
         this.textEnglish = textEnglish;
     }
+}
 
+class Label{
+    constructor(textNameEnglish, textNameHebrew){
+        this.textNameEnglish = textNameEnglish;
+        this.textNameHebrew = textNameHebrew;
+    }
 }
 
 const tanakhTextsChapters = {
