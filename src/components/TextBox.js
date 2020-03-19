@@ -18,8 +18,8 @@ export default class TextBox extends Component {
     render() {
         return (
             <div className='col-sm'>
-                <p>{this.state.textEnglish}</p>
                 <p>{this.state.textHebrew}</p>
+                <p>{this.state.textEnglish}</p>
             </div>
 
         )

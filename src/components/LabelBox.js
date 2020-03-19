@@ -15,8 +15,9 @@ export default class LabelBox extends Component {
     render() {
         return (
             <div className={'col-sm ' + classes.Label}>
-                <h1>{this.state.textNameEnglish}</h1>
                 <h1>{this.state.textNameHebrew}</h1>
+                <h1>{this.state.textNameEnglish}</h1>
+
             </div>
 
         )

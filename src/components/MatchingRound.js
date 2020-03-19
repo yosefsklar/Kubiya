@@ -25,7 +25,9 @@ export default class MatchingRound extends Component {
     getTextInfo(textInfoArray){
         let textInfos = []
         textInfoArray.map(textName =>{
-            let fetchString = 'http://www.sefaria.org/api/texts/' + textName;
+            let subtextNumber = this.chooseRandomSubtext(textName,tanakhTextsChapters);
+            console.log(textName +  ' . ' + subtextNumber);
+            let fetchString = 'http://www.sefaria.org/api/texts/' + textName + '.' + subtextNumber;
             return fetch(fetchString)
                 .then((response) => {
                     return response.json();
@@ -40,6 +42,10 @@ export default class MatchingRound extends Component {
                 });
         })
 
+    }
+
+    chooseRandomSubtext(textName, textDict){
+        return Math.ceil(Math.random() * textDict[textName]);
     }
 
     render(){
@@ -74,5 +80,47 @@ class TextInfo {
         this.textEnglish = textEnglish;
     }
 
+}
+
+const tanakhTextsChapters = {
+    Genesis: 50,
+    Exodus:40,
+    Leviticus: 27,
+    Numbers: 36,
+    Deuteronomy: 34,
+    Joshua: 24,
+    Judges: 21,
+    I_Samuel: 4,
+    II_Samuel: 31,
+    I_Kings: 24,
+    II_Kings: 22,
+    Isaiah: 66,
+    Jeremiah: 52,
+    Ezekiel: 48,
+    Hosea: 14,
+    Joel: 3,
+    Amos: 9,
+    Obadiah: 1,
+    Jonah: 4,
+    Micah: 7,
+    Nahum: 3,
+    Habakkuk: 3,
+    Zephaniah: 3,
+    Haggai: 2,
+    Zechariah: 14,
+    Malachi: 4,
+    Psalms: 150,
+    Proverbs: 31,
+    Job: 42,
+    Song_of_Songs: 8,
+    Ruth: 4,
+    Lamentations: 5,
+    Ecclesiastes: 12,
+    Esther: 10,
+    Daniel: 12,
+    Ezra: 10,
+    Nehemiah: 13,
+    I_Chronicles: 29,
+    II_Chronicles: 36
 }
 
