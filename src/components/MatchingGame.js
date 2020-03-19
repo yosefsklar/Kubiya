@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import MatchingRound from './MatchingRound';
+import Navbar from './assets/Navbar';
 
 const tanakhTexts = ['Genesis', 'Exodus','Leviticus','Numbers','Deuteronomy','Joshua', 'Judges', 'I_Samuel','II_Samuel',
 'I_Kings', 'II_Kings', 'Isaiah','Jeremiah','Ezekiel','Hosea','Joel','Amos','Obadiah', 'Jonah','Micah','Nahum','Habakkuk',
@@ -32,7 +33,10 @@ export default class MatchingGame extends Component {
     }
     render() {
         return (
-            <MatchingRound userTexts={this.state.userTexts}/>
+            <div>
+                <Navbar/>
+                <MatchingRound userTexts={this.state.userTexts}/>
+            </div>
         )
     }
 }

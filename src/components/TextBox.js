@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import classes from '../styles/TextBox.module.css';
 
 
 export default class TextBox extends Component {
@@ -17,7 +18,7 @@ export default class TextBox extends Component {
 
     render() {
         return (
-            <div className='col-sm'>
+            <div className={'col-12 ' + classes.TextBox}>
                 <p>{this.state.textHebrew}</p>
                 <p>{this.state.textEnglish}</p>
             </div>

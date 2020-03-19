@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import TextBox from './TextBox';
 import LabelBox from './LabelBox';
+import TimeBox from './TimeBox'
 import classes from '../styles/MatchingRound.module.css'
 import Parser from "./classes/Parser";
 
@@ -16,7 +17,6 @@ export default class MatchingRound extends Component {
         };
     }
 
-    //
 
     componentDidMount(){
         this.getTextInfo(this.props.userTexts);
@@ -39,7 +39,8 @@ export default class MatchingRound extends Component {
                 }).then((data) => {
                     data['text'] = P.cleanText(data.text);
                     console.log(data);
-                    textInfos.push(new TextInfo(data.indexTitle,data.heTitle, data.he[0], data.text[0]));
+                    let vn = this.chooseRandomVerse(data.text);
+                    textInfos.push(new TextInfo(data.indexTitle,data.heTitle, data.he[vn], data.text[vn]));
                     this.setState({
                         textInfos: textInfos
                     });
@@ -64,7 +65,13 @@ export default class MatchingRound extends Component {
     }
 
     chooseRandomSubtext(textName, textDict){
-        return Math.ceil(Math.random() * textDict[textName]);
+         let num = Math.ceil(Math.random() * textDict[textName]);
+        // console.log('num=' + num );
+        return num;
+    }
+
+    chooseRandomVerse(textArr){
+        return Math.floor(Math.random() * textArr.length);
     }
 
     render(){
@@ -87,6 +94,7 @@ export default class MatchingRound extends Component {
             <div className='row'>
                 {labelCompArray}
             </div>
+            <TimeBox/>
         </div>
     )};
 }
