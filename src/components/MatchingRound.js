@@ -26,18 +26,6 @@ export default class MatchingRound extends Component {
         this.getLabels(this.state.userTexts);
     }
 
-/*    componentDidUpdate(prevProps, prevState, snapshot) {
-
-        if (this.state.userTexts !== prevState.userTexts) {
-            this.getTextInfo(this.state.userTexts);
-            this.getLabels(this.state.userTexts);
-        }
-        console.log("component did update");
-    }*/
-
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     this.getTextInfo(this.props.userTexts);
-    // }
 
     getTextInfo(textInfoArray) {
         let copyInfoArray = [...textInfoArray];
@@ -62,29 +50,11 @@ export default class MatchingRound extends Component {
             console.log(values);
             this.setState({
                 textInfos : values,
-  //              count: this.state.count + 3
+                count: this.state.count + 3
             }, ()=> console.log("finished changes texts"));
         })
     }
-    // getLabels(textInfoArray){
-    //     let copyInfoArray = [...textInfoArray];
-    //     let labels = [];
-    //     copyInfoArray.map(textName => {
-    //         let fetchString = 'http://www.sefaria.org/api/texts/' + textName;
-    //         return fetch(fetchString)
-    //             .then((response) => {
-    //                 return response.json();
-    //             }).then((data) => {
-    //                 data['text'] = P.cleanText(data.text);
-    //                // //console.log(data);
-    //                 let correct = (textName == copyInfoArray[0]);
-    //                 labels.push(new Label(data.indexTitle,data.heTitle, correct));
-    //                 this.setState({
-    //                     labels: labels
-    //                 });
-    //             });
-    //     });
-    // }
+
 
     getLabels(textInfoArray){
         let copyInfoArray = [...textInfoArray];
@@ -103,6 +73,7 @@ export default class MatchingRound extends Component {
         })).then(values => {
             console.log("Label values");
             console.log(values);
+            this.shuffleArray(values)
             this.setState({
                 labels : values
             }, ()=> console.log("finished changes labels"));
@@ -121,10 +92,11 @@ export default class MatchingRound extends Component {
         return newUserTexts;
     }
 
-    resetRoundHandler = () =>{
+    resetRoundHandler = (score) =>{
         //window.alert("hi");
         this.userTexts = this.selectRandomTexts(3, tanakhTexts);
         console.log("After Click " + this.userTexts);
+        this.props.updateScoreHandler(score);
         this.setState({
             userTexts : this.userTexts
         }, () => {
@@ -154,11 +126,17 @@ export default class MatchingRound extends Component {
         return hash;
     };
 
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
 
 render(){
-         console.log("rerender");
-        // console.log(this.state.textInfos);
-        // console.log("this rerenders first label ");
+         console.log("render round");
+
         console.log(this.state.labels);
 
         let textCompArray = [];
@@ -166,11 +144,11 @@ render(){
         if(this.state.textInfos.length > 0) {
             textCompArray = this.state.textInfos.map((text, i) => {
                 //console.log("text " + i + " " + text.textNameEnglish);
-            return (<TextBox key={this.hashcode(text.textEnglish)} textEnglish={text.textEnglish}
+            return (<TextBox key={i + (this.state.textInfos.length * this.props.round)} textEnglish={text.textEnglish}
                                                                            textHebrew={text.textHebrew}/>)});
             labelCompArray = this.state.labels.map((label, i) => {
                // console.log("label " + i + " " + label.textNameEnglish);
-                return(<LabelBox key={this.hashcode(label.textNameEnglish)} textNameEnglish={label.textNameEnglish}
+                return(<LabelBox key={i + (this.state.textInfos.length * this.props.round)} textNameEnglish={label.textNameEnglish}
                                                                            textNameHebrew={label.textNameHebrew}
                                                                            correct={label.correct}
                                                                            resetRoundHandler={this.resetRoundHandler}/>)});

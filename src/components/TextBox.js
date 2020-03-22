@@ -6,9 +6,6 @@ export default class TextBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            textEnglish: this.props.textEnglish,
-            textHebrew: this.props.textHebrew,
-            correct: this.props.correct
         };
 
     }
@@ -20,8 +17,8 @@ export default class TextBox extends Component {
     render() {
         return (
             <div className={'col-12 ' + classes.TextBox}>
-                <p>{this.state.textHebrew}</p>
-                <p>{this.state.textEnglish}</p>
+                <p>{this.props.textHebrew}</p>
+                <p>{this.props.textEnglish}</p>
             </div>
 
         )

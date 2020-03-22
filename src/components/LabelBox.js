@@ -5,8 +5,6 @@ export default class LabelBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            textNameEnglish: this.props.textNameEnglish,
-            textNameHebrew: this.props.textNameHebrew,
         };
 
     }
@@ -15,9 +13,9 @@ export default class LabelBox extends Component {
     render() {
         return (
             <div className={'col-sm '}>
-                <button className={classes.Label} onClick={this.props.resetRoundHandler}>
-                <h1>{this.state.textNameHebrew}</h1>
-                <h1>{this.state.textNameEnglish}</h1>
+                <button className={classes.Label} onClick={() => this.props.resetRoundHandler(this.props.correct ? 1 : 0)} >
+                <h1>{this.props.textNameHebrew}</h1>
+                <h1>{this.props.textNameEnglish}</h1>
                 </button>
             </div>
 
