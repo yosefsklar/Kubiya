@@ -1,0 +1,17 @@
+.AnswerInformer{
+    text-align: center;
+    display: inline-block;
+    font-size: 50px;
+    margin: auto;
+    margin-top: 15%;
+}
+
+
+.Correct{
+    color: darkblue;
+}
+
+.Incorrect{
+    color: indianred;
+}
+

@@ -1,8 +1,13 @@
 .GameDesk {
     width: 80%;
     height: 80%;
-    margin: 50px auto;
+    margin: 30px auto;
     text-align: center;
     font-weight: bold;
     font-size: 1.2rem;
+}
+
+.TextRow{
+    height: 450px;
+
 }

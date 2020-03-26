@@ -4,4 +4,6 @@
     border-radius: 25px;
     box-shadow: 0 2px 1px rosybrown;
     margin: 10px 0px;
+    max-height: 200px;
+    transition: all 0.3s ease-in;
 }

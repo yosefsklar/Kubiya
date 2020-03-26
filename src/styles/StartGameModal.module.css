@@ -1,0 +1,43 @@
+.StartGame {
+    text-align: center;
+    height: 50%;
+    z-index: 500;
+    background-color: white;
+    width: 70%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 15%;
+    top: 30%;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+    margin-top: 15%;
+    position: relative;
+}
+
+.Label {
+    background-color: deepskyblue;
+    height: 125px;
+    width: 200px;
+    border: none;
+    color: white;
+    outline: none;
+    box-shadow: 0 2px 1px darkblue;
+    border-radius: 15px;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
+
+}
+
+.Label:hover{
+    background-color: #046cff;
+    border: solid 3px white;
+    box-shadow: 1px 1px gray;
+
+}

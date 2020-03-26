@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import TextBox from './TextBox';
 import LabelBox from './LabelBox';
-import TimeBox from './TimeBox'
+import TimeBox from './TimeBox';
+import ScoreBoard from './ScoreBoard'
+import AnswerInformer from './AnswerInformer';
 import classes from '../styles/MatchingRound.module.css'
 import Parser from "./classes/Parser";
 
@@ -16,7 +18,12 @@ export default class MatchingRound extends Component {
             userTexts: userTexts,
             textInfos: [],
             labels: [],
-//            count: 0
+            round: 0,
+            clue: 1,
+            answerInform: false,
+            answeredCorrectly: false,
+            correctAnswer: '',
+            addedPoints: 0,
         };
     }
 
@@ -30,8 +37,9 @@ export default class MatchingRound extends Component {
     getTextInfo(textInfoArray) {
         let copyInfoArray = [...textInfoArray];
         let singleTextInfoArray = [];
+        let correctAnswer = copyInfoArray[0];
         for (let i = 0; i < copyInfoArray.length; i++) {
-            singleTextInfoArray.push(copyInfoArray[0]);
+            singleTextInfoArray.push(correctAnswer);
         }
         Promise.all(singleTextInfoArray.map(textName => {
             let subtextNumber = this.chooseRandomSubtext(textName, tanakhTextsChapters);
@@ -92,19 +100,51 @@ export default class MatchingRound extends Component {
         return newUserTexts;
     }
 
-    resetRoundHandler = (score) =>{
+    resetRoundHandler = (score,correct) =>{
         //window.alert("hi");
         this.userTexts = this.selectRandomTexts(3, tanakhTexts);
         console.log("After Click " + this.userTexts);
         this.props.updateScoreHandler(score);
+        let correctAnswer = this.state.textInfos[0].textNameEnglish;
         this.setState({
-            userTexts : this.userTexts
+            userTexts : this.userTexts,
+            clue: 1,
+            answeredCorrectly: correct,
+            answerInform : true,
+            correctAnswer: correctAnswer,
+            addedPoints: score
         }, () => {
             console.log("Post Click state" + this.state.userTexts);
+            this.correctAnswerShow();
             this.getTextInfo(this.state.userTexts);
             this.getLabels(this.state.userTexts);
         });
     }
+
+    correctAnswerShow = () =>{
+
+        let timer = setInterval( () => {
+            this.setState({
+                answerInform : false,
+                round : this.state.round + 1,
+            });
+            clearInterval(timer);
+        },2000)
+
+    }
+
+    resetClue = () =>{
+        if(this.state.clue == 3){
+            this.resetRoundHandler(0, false);
+        }
+        else{
+            this.setState({
+                clue : this.state.clue + 1
+            });
+        }
+    }
+
+
 
     chooseRandomSubtext(textName, textDict){
          let num = Math.ceil(Math.random() * textDict[textName]);
@@ -140,9 +180,14 @@ render(){
         console.log(this.state.labels);
 
         let textCompArray = [];
-        let labelCompArray ;
+        let labelCompArray = [];
         if(this.state.textInfos.length > 0) {
-            textCompArray = this.state.textInfos.map((text, i) => {
+            textCompArray = this.state.textInfos.filter((text,i) => {
+                if (i <= (this.state.clue - 1)) {
+                    return true;
+                }
+                return false;
+            }).map((text, i) => {
                 //console.log("text " + i + " " + text.textNameEnglish);
             return (<TextBox key={i + (this.state.textInfos.length * this.props.round)} textEnglish={text.textEnglish}
                                                                            textHebrew={text.textHebrew}/>)});
@@ -151,7 +196,12 @@ render(){
                 return(<LabelBox key={i + (this.state.textInfos.length * this.props.round)} textNameEnglish={label.textNameEnglish}
                                                                            textNameHebrew={label.textNameHebrew}
                                                                            correct={label.correct}
+                                                                           clue={this.state.clue}
                                                                            resetRoundHandler={this.resetRoundHandler}/>)});
+        }
+        let answerInform = '';
+        if(this.state.answerInform){
+            answerInform = <AnswerInformer correct={this.state.answeredCorrectly} answer={this.state.correctAnswer} addedPoints={this.state.addedPoints}/>
         }
         // console.log("the final arrays")
         // console.log(textCompArray);
@@ -160,13 +210,18 @@ render(){
     return (
         <div className={'container ' + classes.GameDesk}>
             <h1>Match the Verse to the Correct Text</h1>
-            <div className='row'>
-                {textCompArray}
+            <div className={classes.TextRow}>
+                <div className={'row '}>
+                    {this.state.answerInform ? answerInform : textCompArray}
+                </div>
             </div>
             <div className='row'>
-                {labelCompArray}
+                {this.state.answerInform ? <p></p> : labelCompArray}
             </div>
-            <TimeBox/>
+            <ScoreBoard score={this.props.score}/>
+            {this.state.answerInform ?
+                <p></p> : <TimeBox round={this.state.round} style={{display: 'inline'}} resetRoundHandler={this.resetRoundHandler} resetClue={this.resetClue}/>}
+
         </div>
     )};
 }

@@ -13,9 +13,9 @@ export default class LabelBox extends Component {
     render() {
         return (
             <div className={'col-sm '}>
-                <button className={classes.Label} onClick={() => this.props.resetRoundHandler(this.props.correct ? 1 : 0)} >
-                <h1>{this.props.textNameHebrew}</h1>
-                <h1>{this.props.textNameEnglish}</h1>
+                <button className={classes.Label} onClick={() => this.props.resetRoundHandler((this.props.correct ? (4 - this.props.clue) * 100 : 0), this.props.correct)} >
+                <p>{this.props.textNameHebrew}</p>
+                <p>{this.props.textNameEnglish}</p>
                 </button>
             </div>
 

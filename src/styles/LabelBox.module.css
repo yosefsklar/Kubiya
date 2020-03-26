@@ -1,5 +1,7 @@
 .Label {
     background-color: deepskyblue;
+    height: 135px;
+    width: 250px;
     border: none;
     color: white;
     outline: none;
@@ -7,11 +9,17 @@
     border-radius: 15px;
     cursor: pointer;
     font: inherit;
+    font-size: 2.0rem;
     padding: 10px;
     margin: 10px;
-    font-weight: bold;
 }
 
+.Label:hover{
+    background-color: #046cff;
+    border: solid 3px white;
+    box-shadow: 1px 1px gray;
+
+}
 
 .Success {
     color: #5C9210;
