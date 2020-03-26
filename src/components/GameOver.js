@@ -9,7 +9,7 @@ const GameOver = (props) => {
             <h1>Final Score:</h1>
             <h1>{props.score}</h1>
             <p>Thanks for Playing!</p>
-            <button className={classes.Label} onClick={props.startGame}>Play again</button>
+            <button className={classes.Label} onClick={props.reStartGame}>Play again</button>
         </div>
     )
 }

@@ -129,7 +129,7 @@ export default class MatchingRound extends Component {
                 round : this.state.round + 1,
             });
             clearInterval(timer);
-        },2000)
+        },1500)
 
     }
 

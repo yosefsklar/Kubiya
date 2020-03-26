@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import classes from '../../styles/Navbar.module.css';
 
 export default class TimeBox extends Component {
     constructor(props) {
@@ -12,8 +12,8 @@ export default class TimeBox extends Component {
 
     render() {
         return (
-            <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className={classes.NavbarOuter}>
+            <nav className={"navbar navbar-expand-lg navbar-light"} >
                 <a className="navbar-brand" href="#"><bold>Sef</bold>arcade</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

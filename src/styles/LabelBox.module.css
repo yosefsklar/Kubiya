@@ -17,7 +17,7 @@
 .Label:hover{
     background-color: #046cff;
     border: solid 3px white;
-    box-shadow: 1px 1px gray;
+    box-shadow: 0 2px 3px gray;
 
 }
 

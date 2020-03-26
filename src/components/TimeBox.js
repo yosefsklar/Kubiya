@@ -61,7 +61,7 @@ export default class TimeBox extends Component {
         return (
             <div className='col-12'>
                 <h1 style={{display: 'inline-block'}}>Round: {this.props.round}  </h1>
-                <h1 style={{display: 'inline-block', marginLeft:'20px'}}>Time: {this.state.count}</h1>
+                <h1 style={{display: 'inline-block', marginLeft:'20px'}}>Time for Clue: {this.state.count}</h1>
             </div>
 
         )
