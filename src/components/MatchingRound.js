@@ -13,7 +13,7 @@ const P = new Parser();
 export default class MatchingRound extends Component {
     constructor(props) {
         super(props);
-        let userTexts = this.selectRandomTexts(3, tanakhTexts);
+        let userTexts = this.selectRandomTexts(3, TextChapters[this.props.text]);
         this.state = {
             userTexts: userTexts,
             textInfos: [],
@@ -42,7 +42,7 @@ export default class MatchingRound extends Component {
             singleTextInfoArray.push(correctAnswer);
         }
         Promise.all(singleTextInfoArray.map(textName => {
-            let subtextNumber = this.chooseRandomSubtext(textName, tanakhTextsChapters);
+            let subtextNumber = this.chooseRandomSubtext(textName,TextChapters[this.props.text]);
             console.log(textName + ' . ' + subtextNumber);
             let fetchString = 'http://www.sefaria.org/api/texts/' + textName + '.' + subtextNumber;
             return fetch(fetchString)
@@ -76,7 +76,7 @@ export default class MatchingRound extends Component {
                     data['text'] = P.cleanText(data.text);
                     // console.log(data);
                     let correct = (textName == copyInfoArray[0]);
-                    return (new Label(data.indexTitle,data.heTitle, correct));
+                    return (new Label(data.indexTitle.replace(/Mishnah/, ''),data.heIndexTitle.replace('משנה' ,''), correct));
                 });
         })).then(values => {
             console.log("Label values");
@@ -89,7 +89,8 @@ export default class MatchingRound extends Component {
     }
 
     selectRandomTexts(num, textArr){
-        let copyArr = [...textArr]
+        let texts = Object.keys(textArr);
+        let copyArr = [...texts]
         let newUserTexts = [];
         for (let i = 0; i < num; i++) {
             let index = Math.floor(Math.random() * copyArr.length);
@@ -102,7 +103,7 @@ export default class MatchingRound extends Component {
 
     resetRoundHandler = (score,correct) =>{
         //window.alert("hi");
-        this.userTexts = this.selectRandomTexts(3, tanakhTexts);
+        this.userTexts = this.selectRandomTexts(3, TextChapters[this.props.text]);
         console.log("After Click " + this.userTexts);
         this.props.updateScoreHandler(score);
         let correctAnswer = this.state.textInfos[0].textNameEnglish;
@@ -148,6 +149,16 @@ export default class MatchingRound extends Component {
 
     chooseRandomSubtext(textName, textDict){
          let num = Math.ceil(Math.random() * textDict[textName]);
+         if(textDict[0] == 'Berakhot' && textDict[textDict[0]] == 64){
+             if(num == 1){
+                 num = 2;
+                 let daf = Math.round(Math.random())
+                 return num.toString() (daf == 0 ? 'a':'b');
+             }
+             num = num -1;
+             let daf = Math.round(Math.random());
+             return num.toString() + (daf == 0 ? 'a':'b');
+         }
         // console.log('num=' + num );
         return num;
     }
@@ -246,235 +257,154 @@ class Label{
     }
 }
 
-const tanakhTextsChapters = {
-    Genesis: 50,
-    Exodus:40,
-    Leviticus: 27,
-    Numbers: 36,
-    Deuteronomy: 34,
-    Joshua: 24,
-    Judges: 21,
-    I_Samuel: 31,
-    II_Samuel: 24,
-    I_Kings: 22,
-    II_Kings: 25,
-    Isaiah: 66,
-    Jeremiah: 52,
-    Ezekiel: 48,
-    Hosea: 14,
-    Joel: 4,
-    Amos: 9,
-    Obadiah: 1,
-    Jonah: 4,
-    Micah: 7,
-    Nahum: 3,
-    Habakkuk: 3,
-    Zephaniah: 3,
-    Haggai: 2,
-    Zechariah: 14,
-    Malachi: 3,
-    Psalms: 150,
-    Proverbs: 31,
-    Job: 42,
-    Song_of_Songs: 8,
-    Ruth: 4,
-    Lamentations: 5,
-    Ecclesiastes: 12,
-    Esther: 10,
-    Daniel: 12,
-    Ezra: 10,
-    Nehemiah: 13,
-    I_Chronicles: 29,
-    II_Chronicles: 36
+const TextChapters = {
+            tanakh: {Genesis: 50,
+                Exodus:40,
+                Leviticus: 27,
+                Numbers: 36,
+                Deuteronomy: 34,
+                Joshua: 24,
+                Judges: 21,
+                I_Samuel: 31,
+                II_Samuel: 24,
+                I_Kings: 22,
+                II_Kings: 25,
+                Isaiah: 66,
+                Jeremiah: 52,
+                Ezekiel: 48,
+                Hosea: 14,
+                Joel: 4,
+                Amos: 9,
+                Obadiah: 1,
+                Jonah: 4,
+                Micah: 7,
+                Nahum: 3,
+                Habakkuk: 3,
+                Zephaniah: 3,
+                Haggai: 2,
+                Zechariah: 14,
+                Malachi: 3,
+                Psalms: 150,
+                Proverbs: 31,
+                Job: 42,
+                Song_of_Songs: 8,
+                Ruth: 4,
+                Lamentations: 5,
+                Ecclesiastes: 12,
+                Esther: 10,
+                Daniel: 12,
+                Ezra: 10,
+                Nehemiah: 13,
+                I_Chronicles: 29,
+                II_Chronicles: 36},
+    mishnah: {
+        Mishnah_Berakhot: 9,
+        Mishnah_Peah: 8,
+        Mishnah_Demai: 7,
+        Mishnah_Kilayim: 9,
+        Mishnah_Sheviit: 10,
+        Mishnah_Terumot: 11,
+        Mishnah_Maasrot: 5,
+        Mishnah_Maaser_Sheni: 5,
+        Mishnah_Challah: 4,
+        Mishnah_Orlah: 3,
+        Mishnah_Bikkurim: 4,
+        Mishnah_Shabbat: 24,
+        Mishnah_Eruvin: 10,
+        Mishnah_Pesachim: 10,
+        Mishnah_Shekalim: 8,
+        Mishnah_Yoma: 8,
+        Mishnah_Sukkah: 5,
+        Mishnah_Beitzah: 5,
+        Mishnah_Rosh_Hashanah: 4,
+        Mishnah_Taanit: 4,
+        Mishnah_Megillah: 4,
+        Mishnah_Moed_Katan: 3,
+        Mishnah_Chagigah: 3,
+        Mishnah_Yevamot: 16,
+        Mishnah_Ketubot: 13,
+        Mishnah_Nedarim: 11,
+        Mishnah_Nazir: 9,
+        Mishnah_Sotah: 9,
+        Mishnah_Gittin: 9,
+        Mishnah_Kiddushin:4,
+        Mishnah_Bava_Kamma: 10,
+        Mishnah_Bava_Metzia: 10,
+        Mishnah_Bava_Batra: 10,
+        Mishnah_Sanhedrin: 11,
+        Mishnah_Makkot: 3,
+        Mishnah_Shevuot: 8,
+        Mishnah_Eduyot: 8,
+        Mishnah_Avodah_Zarah: 5,
+        Mishnah_Pirkei_Avot: 5,
+        Mishnah_Horayot: 3,
+        Mishnah_Zevachim: 14,
+        Mishnah_Menachot: 13,
+        Mishnah_Chullin: 12,
+        Mishnah_Bekhorot: 9,
+        Mishnah_Arakhin: 9,
+        Mishnah_Temurah: 7,
+        Mishnah_Keritot: 6,
+        Mishnah_Meilah: 6,
+        Mishnah_Tamid: 7,
+        Mishnah_Middot: 5,
+        Mishnah_Kinnim: 3,
+        Mishnah_Kelim: 30,
+        Mishnah_Oholot: 18,
+        Mishnah_Negaim: 14,
+        Mishnah_Parah: 12,
+        Mishnah_Tahorot: 10,
+        Mishnah_Mikvaot: 10,
+        Mishnah_Niddah: 10,
+        Mishnah_Makhshirin: 6,
+        Mishnah_Zavim: 5,
+        Mishnah_Tevul_Yom: 4,
+        Mishnah_Yadayim: 4,
+        Mishnah_Oktzin: 3
+    },
+    talmud: {
+        Berakhot: 64,
+        Shabbat: 157,
+        Eruvin:105,
+        Pesachim: 121,
+        Rosh_Hashanah: 35,
+        Yoma: 88,
+        Sukkah: 56,
+        Beitzah: 40,
+        Taanit: 31,
+        Megillah: 32,
+        Moed_Katan: 29,
+        Chagigah: 27,
+        Yevamot: 122,
+        Ketubot: 112,
+        Nedarim: 91,
+        Nazir: 66,
+        Sotah:49,
+        Gittin: 90,
+        Kiddushin: 82,
+        Bava_Kamma: 119,
+        Bava_Metzia: 119,
+        Bava_Batra: 176,
+        Sanhedrin: 113,
+        Makkot: 24,
+        Shevuot: 49,
+        Avodah_Zarah: 76,
+        Horayot: 14,
+        Zevachim: 120,
+        Menachot: 110,
+        Chullin: 142,
+        Bekhorot: 61,
+        Arakhin: 34,
+        Temurah: 34,
+        Keritot: 28,
+        Meilah: 22,
+        Tamid: 8,
+        Niddah: 73
+    }
+
 }
 
-const tanakhTexts = ['Genesis', 'Exodus','Leviticus','Numbers','Deuteronomy','Joshua', 'Judges', 'I_Samuel','II_Samuel',
-    'I_Kings', 'II_Kings', 'Isaiah','Jeremiah','Ezekiel','Hosea','Joel','Amos','Obadiah', 'Jonah','Micah','Nahum','Habakkuk',
-    'Zephaniah','Haggai','Zechariah','Malachi','Psalms', 'Proverbs','Job','Song_of_Songs', 'Ruth', 'Lamentations', 'Ecclesiastes',
-    'Esther', 'Daniel','Ezra', 'Nehemiah','I_Chronicles','II_Chronicles']
 
-const mishnahTextsChapters = {
-
-}
-//
-// const mishnahTexts = [
-//     'Berakhot',
-//     'Peah'
-//     Demai
-//     Kilayim
-//     Sheviit
-//     Terumot
-//     Maasrot
-//     Maaser Sheni
-//     Challah
-//     Orlah
-//     Bikkurim
-//     SEDER MOED
-//     Shabbat
-//     Eruvin
-//     Pesachim
-//     Shekalim
-//     Yoma
-//     Sukkah
-//     Beitzah
-//     Rosh Hashanah
-//     Taanit
-//     Megillah
-//     Moed Katan
-//     Chagigah
-//     SEDER NASHIM
-//     Yevamot
-//     Ketubot
-//     Nedarim
-//     Nazir
-//     Sotah
-//     Gittin
-//     Kiddushin
-//     SEDER NEZIKIN
-//     Bava Kamma
-//     Bava Metzia
-//     Bava Batra
-//     Sanhedrin
-//     Makkot
-//     Shevuot
-//     Eduyot
-//     Avodah Zarah
-//     Pirkei Avot
-//     Horayot
-//     SEDER KODASHIM
-//     Zevachim
-//     Menachot
-//     Chullin
-//     Bekhorot
-//     Arakhin
-//     Temurah
-//     Keritot
-//     Meilah
-//     Tamid
-//     Middot
-//     Kinnim
-//     SEDER TAHOROT
-//     Kelim
-//     Oholot
-//     Negaim
-//     Parah
-//     Tahorot
-//     Mikvaot
-//     Niddah
-//     Makhshirin
-//     Zavim
-//     Tevul Yom
-//     Yadayim
-//     Oktzin
-//
-//
-// ]
-
-const mishnahTextsPages = {
-    Berakhot: 9,
-    Peah: 8,
-    Demai: 7,
-    Kilayim: 9,
-    Sheviit: 10,
-    Terumot: 11,
-    Maasrot: 5,
-    Maaser_Sheni: 5,
-    Challah: 4,
-    Orlah: 3,
-    Bikkurim: 4,
-    Shabbat: 24,
-    Eruvin: 10,
-    Pesachim: 10,
-    Shekalim: 8,
-    Yoma: 8,
-    Sukkah: 5,
-    Beitzah: 5,
-    Rosh_Hashanah: 4,
-    Taanit: 4,
-    Megillah: 4,
-    Moed_Katan: 3,
-    Chagigah: 3,
-    Yevamot: 16,
-    Ketubot: 13,
-    Nedarim: 11,
-    Nazir: 9,
-    Sotah: 9,
-    Gittin: 9,
-    Kiddushin:4,
-    Bava_Kamma: 10,
-    Bava_Metzia: 10,
-    Bava_Batra: 10,
-    Sanhedrin: 11,
-    Makkot: 3,
-    Shevuot: 8,
-    Eduyot: 8,
-    Avodah_Zarah: 5,
-    Pirkei_Avot: 5,
-    Horayot: 3,
-    Zevachim: 14,
-    Menachot: 13,
-    Chullin: 12,
-    Bekhorot: 9,
-    Arakhin: 9
-    Temurah: 7,
-    Keritot: 6,
-    Meilah: 6,
-    Tamid: 7,
-    Middot: 5,
-    Kinnim: 3,
-    Kelim: 30,
-    Oholot: 18,
-    Negaim: 14,
-    Parah: 12,
-    Tahorot: 10,
-    Mikvaot: 10,
-    Niddah: 10,
-    Makhshirin: 6,
-    Zavim: 5,
-    Tevul_Yom: 4,
-    Yadayim: 4,
-    Oktzin: 3
-}
-
-const talmudTextsPages = {
-    Berakhot: 64,
-    Shabbat: 157,
-    Eruvin:105,
-    Pesachim: 121,
-    Rosh_Hashanah: 35,
-    Yoma: 88,
-    Sukkah: 56,
-    Beitzah: 40,
-    Taanit: 31,
-    Megillah: 32,
-    Moed_Katan: 29,
-    Chagigah: 27,
-    Yevamot: 122,
-    Ketubot: 112,
-    Nedarim: 91,
-    Nazir: 66,
-    Sotah:49,
-    Gittin: 90,
-    Kiddushin: 82,
-    Bava_Kamma: 119,
-    Bava_Metzia: 119,
-    Bava_Batra: 176,
-    Sanhedrin: 113,
-    Makkot: 24,
-    Shevuot: 49,
-    Avodah_Zarah: 76,
-    Horayot: 14,
-    Zevachim: 120,
-    Menachot: 110,
-    Chullin: 142,
-    Bekhorot: 61,
-    Arakhin: 34,
-    Temurah: 34,
-    Keritot: 28,
-    Meilah: 22,
-    Tamid: 8,
-    Niddah: 73
-}
 
 
 

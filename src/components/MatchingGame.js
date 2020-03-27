@@ -3,7 +3,7 @@ import MatchingRound from './MatchingRound';
 import GameOver from './GameOver';
 import GameLang from './GameLang';
 import GameText from './GameText';
-import Navbar from './assets/Navbar';
+import Navbar from './assets/SiteNavBar';
 import StartGameModal from './StartGameModal';
 
 
@@ -84,7 +84,8 @@ export default class MatchingGame extends Component {
             currentDisplay = <MatchingRound updateScoreHandler={this.updateScoreHandler}
                                             round={this.state.round}
                                             score={this.state.score}
-                                            lang={this.state.lang}/>;
+                                            lang={this.state.lang}
+                                            text={this.state.text}/>;
 
         }
         else if(this.state.startGame){
@@ -98,7 +99,6 @@ export default class MatchingGame extends Component {
         }
         return (
             <div>
-                <Navbar/>
                 {currentDisplay}
             </div>
         )
