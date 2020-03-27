@@ -40,6 +40,25 @@
 
 }
 
+.LabelConfig {
+    background-color: deepskyblue;
+    height:60px;
+    width: 50px;
+    border: none;
+    color: white;
+    outline: none;
+    box-shadow: 0 2px 3px darkblue;
+    border-radius: 15px;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 15px;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: center;
+
+}
+
 .Label:hover{
     background-color: #046cff;
     border: solid 3px white;

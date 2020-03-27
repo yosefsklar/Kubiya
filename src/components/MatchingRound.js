@@ -189,7 +189,7 @@ render(){
                 return false;
             }).map((text, i) => {
                 //console.log("text " + i + " " + text.textNameEnglish);
-            return (<TextBox key={i + (this.state.textInfos.length * this.props.round)} textEnglish={text.textEnglish}
+            return (<TextBox key={i + (this.state.textInfos.length * this.props.round)} lang={this.props.lang} textEnglish={text.textEnglish}
                                                                            textHebrew={text.textHebrew}/>)});
             labelCompArray = this.state.labels.map((label, i) => {
                // console.log("label " + i + " " + label.textNameEnglish);
@@ -197,6 +197,7 @@ render(){
                                                                            textNameHebrew={label.textNameHebrew}
                                                                            correct={label.correct}
                                                                            clue={this.state.clue}
+                                                                            lang={this.props.lang}
                                                                            resetRoundHandler={this.resetRoundHandler}/>)});
         }
         let answerInform = '';
@@ -210,11 +211,13 @@ render(){
     return (
         <div className={'container ' + classes.GameDesk}>
             <h1>Match the Verse to the Correct Text</h1>
-            <div className={classes.TextRow}>
-                <div className={'row '}>
-                    {this.state.answerInform ? answerInform : textCompArray}
+
+                <div className={classes.TextRow}>
+                    <div className={'row '}>
+                        {this.state.answerInform ? answerInform : textCompArray}
                 </div>
-            </div>
+                </div>
+
             <div className='row'>
                 {this.state.answerInform ? <p></p> : labelCompArray}
             </div>

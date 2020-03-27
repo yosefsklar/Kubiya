@@ -7,7 +7,9 @@
     font-size: 1.2rem;
 }
 
-.TextRow{
-    height: 450px;
 
+@media (min-width: 577px) {
+    .TextRow{
+        height: 450px;
+    }
 }
