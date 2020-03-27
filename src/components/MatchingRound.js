@@ -436,7 +436,45 @@ const mishnahTextsPages = {
     Oktzin: 3
 }
 
-const talmudTexts = [
+const talmudTextsPages = {
+    Berakhot: 64,
+    Shabbat: 157,
+    Eruvin:105,
+    Pesachim: 121,
+    Rosh_Hashanah: 35,
+    Yoma: 88,
+    Sukkah: 56,
+    Beitzah: 40,
+    Taanit: 31,
+    Megillah: 32,
+    Moed_Katan: 29,
+    Chagigah: 27,
+    Yevamot: 122,
+    Ketubot: 112,
+    Nedarim: 91,
+    Nazir: 66,
+    Sotah:49,
+    Gittin: 90,
+    Kiddushin: 82,
+    Bava_Kamma: 119,
+    Bava_Metzia: 119,
+    Bava_Batra: 176,
+    Sanhedrin: 113,
+    Makkot: 24,
+    Shevuot: 49,
+    Avodah_Zarah: 76,
+    Horayot: 14,
+    Zevachim: 120,
+    Menachot: 110,
+    Chullin: 142,
+    Bekhorot: 61,
+    Arakhin: 34,
+    Temurah: 34,
+    Keritot: 28,
+    Meilah: 22,
+    Tamid: 8,
+    Niddah: 73
+}
 
-]
+
 
