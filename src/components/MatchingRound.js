@@ -293,3 +293,150 @@ const tanakhTexts = ['Genesis', 'Exodus','Leviticus','Numbers','Deuteronomy','Jo
     'Zephaniah','Haggai','Zechariah','Malachi','Psalms', 'Proverbs','Job','Song_of_Songs', 'Ruth', 'Lamentations', 'Ecclesiastes',
     'Esther', 'Daniel','Ezra', 'Nehemiah','I_Chronicles','II_Chronicles']
 
+const mishnahTextsChapters = {
+
+}
+//
+// const mishnahTexts = [
+//     'Berakhot',
+//     'Peah'
+//     Demai
+//     Kilayim
+//     Sheviit
+//     Terumot
+//     Maasrot
+//     Maaser Sheni
+//     Challah
+//     Orlah
+//     Bikkurim
+//     SEDER MOED
+//     Shabbat
+//     Eruvin
+//     Pesachim
+//     Shekalim
+//     Yoma
+//     Sukkah
+//     Beitzah
+//     Rosh Hashanah
+//     Taanit
+//     Megillah
+//     Moed Katan
+//     Chagigah
+//     SEDER NASHIM
+//     Yevamot
+//     Ketubot
+//     Nedarim
+//     Nazir
+//     Sotah
+//     Gittin
+//     Kiddushin
+//     SEDER NEZIKIN
+//     Bava Kamma
+//     Bava Metzia
+//     Bava Batra
+//     Sanhedrin
+//     Makkot
+//     Shevuot
+//     Eduyot
+//     Avodah Zarah
+//     Pirkei Avot
+//     Horayot
+//     SEDER KODASHIM
+//     Zevachim
+//     Menachot
+//     Chullin
+//     Bekhorot
+//     Arakhin
+//     Temurah
+//     Keritot
+//     Meilah
+//     Tamid
+//     Middot
+//     Kinnim
+//     SEDER TAHOROT
+//     Kelim
+//     Oholot
+//     Negaim
+//     Parah
+//     Tahorot
+//     Mikvaot
+//     Niddah
+//     Makhshirin
+//     Zavim
+//     Tevul Yom
+//     Yadayim
+//     Oktzin
+//
+//
+// ]
+
+const mishnahTextsPages = {
+    Berakhot: 9,
+    Peah: 8,
+    Demai: 7,
+    Kilayim: 9,
+    Sheviit: 10,
+    Terumot: 11,
+    Maasrot: 5,
+    Maaser_Sheni: 5,
+    Challah: 4,
+    Orlah: 3,
+    Bikkurim: 4,
+    Shabbat: 24,
+    Eruvin: 10,
+    Pesachim: 10,
+    Shekalim: 8,
+    Yoma: 8,
+    Sukkah: 5,
+    Beitzah: 5,
+    Rosh_Hashanah: 4,
+    Taanit: 4,
+    Megillah: 4,
+    Moed_Katan: 3,
+    Chagigah: 3,
+    Yevamot: 16,
+    Ketubot: 13,
+    Nedarim: 11,
+    Nazir: 9,
+    Sotah: 9,
+    Gittin: 9,
+    Kiddushin:4,
+    Bava_Kamma: 10,
+    Bava_Metzia: 10,
+    Bava_Batra: 10,
+    Sanhedrin: 11,
+    Makkot: 3,
+    Shevuot: 8,
+    Eduyot: 8,
+    Avodah_Zarah: 5,
+    Pirkei_Avot: 5,
+    Horayot: 3,
+    Zevachim: 14,
+    Menachot: 13,
+    Chullin: 12,
+    Bekhorot: 9,
+    Arakhin: 9
+    Temurah: 7,
+    Keritot: 6,
+    Meilah: 6,
+    Tamid: 7,
+    Middot: 5,
+    Kinnim: 3,
+    Kelim: 30,
+    Oholot: 18,
+    Negaim: 14,
+    Parah: 12,
+    Tahorot: 10,
+    Mikvaot: 10,
+    Niddah: 10,
+    Makhshirin: 6,
+    Zavim: 5,
+    Tevul_Yom: 4,
+    Yadayim: 4,
+    Oktzin: 3
+}
+
+const talmudTexts = [
+
+]
+

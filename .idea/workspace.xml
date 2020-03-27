@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="adcf82e9-6b07-45a1-98ee-c89add9c4ba4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/GameLang.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/GameText.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MatchingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MatchingGame.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MatchingRound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MatchingRound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TextBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TextBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/MatchingRound.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/MatchingRound.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/StartGameModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/StartGameModal.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/TextBox.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/TextBox.module.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -47,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/MatchingGame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1035">
-              <caret line="78" column="37" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
+            <state relative-caret-position="1632">
+              <caret line="96" column="64" lean-forward="true" selection-start-line="96" selection-start-column="64" selection-end-line="96" selection-end-column="64" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -56,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/MatchingRound.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="199" column="98" selection-start-line="199" selection-start-column="98" selection-end-line="199" selection-end-column="98" />
+            <state relative-caret-position="388">
+              <caret line="433" column="17" lean-forward="true" selection-start-line="433" selection-start-column="17" selection-end-line="433" selection-end-column="17" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -101,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/GameText.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="287">
-              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="335">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -154,16 +147,17 @@
       <find>answered</find>
       <find>correct</find>
       <find>TimeB</find>
-      <find>config</find>
       <find>configs</find>
+      <find>Lang</find>
+      <find>config</find>
     </findStrings>
     <replaceStrings>
       <replace>//console.log</replace>
       <replace>labels</replace>
       <replace>console</replace>
       <replace>className</replace>
-      <replace>Lang</replace>
       <replace>Text</replace>
+      <replace>Lang</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -197,20 +191,19 @@
         <option value="$PROJECT_DIR$/src/styles/TextBox.module.css" />
         <option value="$PROJECT_DIR$/src/styles/MatchingRound.module.css" />
         <option value="$PROJECT_DIR$/src/styles/StartGameModal.module.css" />
-        <option value="$PROJECT_DIR$/src/components/MatchingRound.js" />
         <option value="$PROJECT_DIR$/src/components/TextBox.js" />
         <option value="$PROJECT_DIR$/src/components/GameConfig.js" />
-        <option value="$PROJECT_DIR$/src/components/MatchingGame.js" />
         <option value="$PROJECT_DIR$/src/components/GameLang.js" />
         <option value="$PROJECT_DIR$/src/components/GameText.js" />
+        <option value="$PROJECT_DIR$/src/components/MatchingGame.js" />
+        <option value="$PROJECT_DIR$/src/components/MatchingRound.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="1943" />
-    <option name="height" value="1043" />
+    <option name="width" value="980" />
+    <option name="height" value="1031" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -309,18 +302,18 @@
       <workItem from="1584542783761" duration="53261000" />
       <workItem from="1584973604061" duration="12563000" />
       <workItem from="1585063990441" duration="7940000" />
-      <workItem from="1585085063931" duration="17257000" />
+      <workItem from="1585085063931" duration="18536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98973000" />
+    <option name="totallyTimeSpent" value="100252000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="-7" y="0" width="653" height="687" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25039744" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25039744" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -340,7 +333,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33783785" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25039744" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -368,7 +361,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/MatchingGame.js</url>
-          <line>15</line>
+          <line>17</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -558,30 +551,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/MatchingRound.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="199" column="98" selection-start-line="199" selection-start-column="98" selection-end-line="199" selection-end-column="98" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TextBox.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/MatchingGame.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="78" column="37" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
@@ -600,10 +573,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/GameText.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="335">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/MatchingGame.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="96" column="64" lean-forward="true" selection-start-line="96" selection-start-column="64" selection-end-line="96" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/MatchingRound.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="433" column="17" lean-forward="true" selection-start-line="433" selection-start-column="17" selection-end-line="433" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>

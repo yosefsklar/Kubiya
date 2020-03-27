@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MatchingRound from './MatchingRound';
 import GameOver from './GameOver';
 import GameLang from './GameLang';
+import GameText from './GameText';
 import Navbar from './assets/Navbar';
 import StartGameModal from './StartGameModal';
 
@@ -13,12 +14,14 @@ export default class MatchingGame extends Component {
         super();
         this.state = {
             lang: 'english',
+            text: 'tanakh',
             score: 0,
             round: 1,
             gameStarted: false,
             gameOver: false,
             startGame: false,
             gameLang: true,
+            gameText: false,
             rounds: 10
         }
         this.updateScoreHandler = this.updateScoreHandler.bind(this);
@@ -58,10 +61,18 @@ export default class MatchingGame extends Component {
         this.setState({
             lang: lang,
             gameLang: false,
-            startGame: true
+            gameText: true,
+
         })
     }
     //reset texts, will need to reset clock
+    setText = (text) => {
+        this.setState({
+            text: text,
+            gameText: false,
+            startGame: true,
+        })
+    }
 
     render() {
         let currentDisplay;
@@ -70,7 +81,10 @@ export default class MatchingGame extends Component {
 
         }
         else if(this.state.gameStarted){
-            currentDisplay = <MatchingRound updateScoreHandler={this.updateScoreHandler} round={this.state.round} score={this.state.score} lang={this.state.lang}/>;
+            currentDisplay = <MatchingRound updateScoreHandler={this.updateScoreHandler}
+                                            round={this.state.round}
+                                            score={this.state.score}
+                                            lang={this.state.lang}/>;
 
         }
         else if(this.state.startGame){
@@ -78,6 +92,9 @@ export default class MatchingGame extends Component {
         }
         else if(this.state.gameLang){
             currentDisplay = <GameLang setLang={this.setLang}/>;
+        }
+        else if(this.state.gameText){
+            currentDisplay = <GameText setText={this.setText}/>;
         }
         return (
             <div>
