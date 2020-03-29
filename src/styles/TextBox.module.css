@@ -1,8 +1,7 @@
 .TextBox{
-    background-color: rgba(255, 127,80,0.1);
-    border: 3px solid rgba(255, 127,80,0.5);
+    background-color: white;
     border-radius: 25px;
-    box-shadow: 0 2px 1px rosybrown;
+    box-shadow: 0 2px 1px darkgray;
     margin: 10px 0px;
     width: 100%;
     transition: all 0.3s ease-in;

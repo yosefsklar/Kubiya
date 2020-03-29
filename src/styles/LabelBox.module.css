@@ -28,3 +28,12 @@
 .Danger {
     color: #944317;
 }
+
+.Small{
+    background-color: rgba(0,191,255,0.5);
+    font-size: 1.0rem;
+    height: 40px;
+    width: 100px;
+    margin-top: 10%;
+    box-shadow: 0 1px 1px darkblue;
+}

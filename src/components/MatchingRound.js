@@ -4,6 +4,7 @@ import LabelBox from './LabelBox';
 import TimeBox from './TimeBox';
 import ScoreBoard from './ScoreBoard'
 import AnswerInformer from './AnswerInformer';
+import NextBox from './NextBox'
 import classes from '../styles/MatchingRound.module.css'
 import Parser from "./classes/Parser";
 
@@ -192,6 +193,7 @@ render(){
 
         let textCompArray = [];
         let labelCompArray = [];
+        let nextClue = '';
         if(this.state.textInfos.length > 0) {
             textCompArray = this.state.textInfos.filter((text,i) => {
                 if (i <= (this.state.clue - 1)) {
@@ -210,6 +212,9 @@ render(){
                                                                            clue={this.state.clue}
                                                                             lang={this.props.lang}
                                                                            resetRoundHandler={this.resetRoundHandler}/>)});
+            if(this.state.clue >= 1 && this.state.clue < 3){
+                nextClue =<NextBox nextClue={this.resetClue}></NextBox>
+            }
         }
         let answerInform = '';
         if(this.state.answerInform){
@@ -226,6 +231,7 @@ render(){
                 <div className={classes.TextRow}>
                     <div className={'row '}>
                         {this.state.answerInform ? answerInform : textCompArray}
+                        {!this.state.answerInform && nextClue}
                 </div>
                 </div>
 
@@ -336,7 +342,7 @@ const TextChapters = {
         Mishnah_Shevuot: 8,
         Mishnah_Eduyot: 8,
         Mishnah_Avodah_Zarah: 5,
-        Mishnah_Pirkei_Avot: 5,
+        Mishnah_Avot: 5,
         Mishnah_Horayot: 3,
         Mishnah_Zevachim: 14,
         Mishnah_Menachot: 13,
@@ -403,8 +409,4 @@ const TextChapters = {
     }
 
 }
-
-
-
-
 
