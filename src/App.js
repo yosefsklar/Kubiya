@@ -1,8 +1,8 @@
 import React from 'react';
 import {Route, Switch} from "react-router-dom";
-import HomePage from './components/HomePage';
+import HomePage from './components/pages/HomePage';
 import MatchingGame from './components/MatchingGame';
-import AboutPage from './components/AboutPage'
+import AboutPage from './components/pages/AboutPage'
 import './App.css';
 import Navbar from "./components/assets/SiteNavBar";
 

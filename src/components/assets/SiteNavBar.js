@@ -16,7 +16,7 @@ export default class TimeBox extends Component {
     render() {
         return (
             <Navbar className={classes.NavbarOuter} expand="lg">
-                <Navbar.Brand href="#">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="#">Sefarcade</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

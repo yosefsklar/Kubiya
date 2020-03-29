@@ -2,29 +2,18 @@ import React, {Component} from 'react';
 import classes from '../styles/TextBox.module.css';
 
 
-export default class TextBox extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-        };
+const TextBox = (props) => {
 
-    }
+    return (
+        <div className={'col-12 ' + classes.TextBox}>
+            {
+                {hebrew: <p>{props.textHebrew}</p>,
+                english: <p>{props.textEnglish}</p>,
+                both: <div><p>{props.textHebrew}</p><p>{props.textEnglish}</p></div>,
+                }[props.lang]
+            }
+        </div>
 
-
-
-
-
-    render() {
-        return (
-            <div className={'col-12 ' + classes.TextBox}>
-                {
-                    {hebrew: <p>{this.props.textHebrew}</p>,
-                    english: <p>{this.props.textEnglish}</p>,
-                    both: <div><p>{this.props.textHebrew}</p><p>{this.props.textEnglish}</p></div>,
-                    }[this.props.lang]
-                }
-            </div>
-
-        )
-    }
+    )
 }
+export default TextBox;

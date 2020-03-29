@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 import TextBox from './TextBox';
-import LabelBox from './LabelBox';
-import TimeBox from './TimeBox';
+import TimeBox from './assets/TimeBox';
 import ScoreBoard from './ScoreBoard'
 import AnswerInformer from './AnswerInformer';
-import NextBox from './NextBox'
 import classes from '../styles/MatchingRound.module.css'
 import Parser from "./classes/Parser";
+import {BtnAnswer, BtnSmall} from "./assets/buttons";
 
 const P = new Parser();
 
@@ -206,14 +205,14 @@ render(){
                                                                            textHebrew={text.textHebrew}/>)});
             labelCompArray = this.state.labels.map((label, i) => {
                // console.log("label " + i + " " + label.textNameEnglish);
-                return(<LabelBox key={i + (this.state.textInfos.length * this.props.round)} textNameEnglish={label.textNameEnglish}
-                                                                           textNameHebrew={label.textNameHebrew}
+                return(<BtnAnswer key={i + (this.state.textInfos.length * this.props.round)} answerEnglish={label.textNameEnglish}
+                                                                           answerHebrew={label.textNameHebrew}
                                                                            correct={label.correct}
                                                                            clue={this.state.clue}
                                                                             lang={this.props.lang}
                                                                            resetRoundHandler={this.resetRoundHandler}/>)});
             if(this.state.clue >= 1 && this.state.clue < 3){
-                nextClue =<NextBox nextClue={this.resetClue}></NextBox>
+                nextClue =<BtnSmall onClick={this.resetClue}>Next Clue</BtnSmall>
             }
         }
         let answerInform = '';

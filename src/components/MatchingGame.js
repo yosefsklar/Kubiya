@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import MatchingRound from './MatchingRound';
-import GameOver from './GameOver';
+import EndGameModal from './EndGameModal';
 import GameLang from './GameLang';
 import GameText from './GameText';
 import Navbar from './assets/SiteNavBar';
@@ -77,7 +77,7 @@ export default class MatchingGame extends Component {
     render() {
         let currentDisplay;
         if(this.state.gameOver){
-            currentDisplay = <GameOver reStartGame={this.startGame} score={this.state.score}/>;
+            currentDisplay = <EndGameModal reStartGame={this.startGame} score={this.state.score}/>;
 
         }
         else if(this.state.gameStarted){
