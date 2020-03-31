@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import Crossward from '../Crossword';
+import CrosswordGenerator from "../CrosswordGenerator";
 
 
 export default class AboutPage extends Component {
@@ -14,6 +16,8 @@ export default class AboutPage extends Component {
         return (
             <div className={'col-sm '}>
                 <h1>About</h1>
+                <CrosswordGenerator/>
+                <Crossward/>
             </div>
 
         )
