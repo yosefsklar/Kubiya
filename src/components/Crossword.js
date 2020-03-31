@@ -6,17 +6,27 @@ export default class Crossword extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            grid : GRID_DATA,
-            clues : CLUE_DATA,
-            activeClueBoxes: CLUE_DATA['Ac1'].boxes,
-            activeClue: ['Ac1'],
-            boxInFocus: CLUE_DATA['Ac1'].boxes[0]
+            activeClueBoxes: '',
+            activeClue: '',
+            boxInFocus: ''
         };
 
         this.setActiveClueBoxes = this.setActiveClueBoxes.bind(this);
         this.setActiveClue = this.setActiveClue.bind(this);
         this.setBoxInFocus = this.setBoxInFocus.bind(this);
     }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.clues != this.props.clues){
+            console.log("Update! " + this.props.clues)
+            this.setState({
+                activeClueBoxes: this.props.clues['Ac1'].boxes,
+                activeClue: ['Ac1'],
+                boxInFocus: this.props.clues['Ac1'].boxes[0]
+            })
+        }
+
+    }
+
 
     setActiveClueBoxes(boxes) {
         this.setState({
@@ -37,10 +47,12 @@ export default class Crossword extends Component {
     }
 
   render() {
+        console.log("Render crossword ");
+      //console.log(Object.keys(this.state.clues).length);
     return (
       <div className="crossword">
-        <Clues clues={ this.state.clues } setActiveClueBoxes={ this.setActiveClueBoxes } activeClue={ this.state.activeClue } setActiveClue={ this.setActiveClue } setBoxInFocus={ this.setBoxInFocus } />
-        <Board grid={ this.state.grid } allClues={ this.state.clues } clues={ this.state.clues } setActiveClueBoxes={ this.setActiveClueBoxes } highlightedBoxes={ this.state.activeClueBoxes } setActiveClue = { this.setActiveClue } setBoxInFocus={ this.setBoxInFocus } boxInFocus={ this.state.boxInFocus }/>
+        <Clues clues={ this.props.clues } setActiveClueBoxes={ this.setActiveClueBoxes } activeClue={ this.state.activeClue } setActiveClue={ this.setActiveClue } setBoxInFocus={ this.setBoxInFocus } />
+        <Board grid={ this.props.grid } allClues={ this.props.clues } clues={ this.props.clues } setActiveClueBoxes={ this.setActiveClueBoxes } highlightedBoxes={ this.state.activeClueBoxes } setActiveClue = { this.setActiveClue } setBoxInFocus={ this.setBoxInFocus } boxInFocus={ this.state.boxInFocus }/>
       </div>
     );
   }
@@ -49,25 +61,35 @@ export default class Crossword extends Component {
 class Clues extends Component {
     constructor(props) {
         super(props);
-        const cluesAcross = [];
-        const cluesDown = [];
-
-        for (const key in this.props.clues) {
-            const clue = this.props.clues[key];
-            clue.id = key;
-            if (clue.direction === 'across') {
-                cluesAcross.push(clue);
-            }
-            else {
-                cluesDown.push(clue);
-            }
-        }
 
         this.state = {
-            across: cluesAcross,
-            down: cluesDown
-        };
+            across: [],
+            down: []
+        }
     }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps != this.props){
+            const cluesAcross = [];
+            const cluesDown = [];
+            console.log("printing clueS: ")
+            for (const key in this.props.clues) {
+                const clue = this.props.clues[key];
+                console.log("printing clue " + key)
+                clue.id = key;
+                if (clue.direction === 'across') {
+                    cluesAcross.push(clue);
+                }
+                else {
+                    cluesDown.push(clue);
+                }
+            }
+        this.setState({
+            across : cluesAcross,
+            down : cluesDown
+        })
+        }
+    }
+
 
     render() {
         return (

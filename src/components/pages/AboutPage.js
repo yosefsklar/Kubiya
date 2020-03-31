@@ -17,7 +17,6 @@ export default class AboutPage extends Component {
             <div className={'col-sm '}>
                 <h1>About</h1>
                 <CrosswordGenerator/>
-                <Crossward/>
             </div>
 
         )

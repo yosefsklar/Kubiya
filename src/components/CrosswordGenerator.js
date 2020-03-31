@@ -1,30 +1,29 @@
 import React, {Component} from 'react';
+import Crossword from "./Crossword";
 
 
 const MATRIX =[{x:0,y:0,d:2,clue:"ויאמרמשה",num: 1},
-    {x:6,y:0,d:2,clue:"מכבי",num:2},{x:0,y:3,d:1,clue:"מילהאלי",num:3}]
-const CLUE_LIST = [{num: 1, clue: "And God Said to Moses"},{num: 2, clue: "The israeli basketball club"},{num: 3, clue: "Who is with god? Come with me"}]
+    {x:6,y:0,d:2,clue:"מכבי",num:2},{x:0,y:3,d:1,clue:"מילהאלי",num:1}]
+const CLUE_LIST = [{word: "ויאמרמשה", clue: "And God Said to Moses"},{word: "מכבי", clue: "The israeli basketball club"},{word: "מילהאלי", clue: "Who is with god? Come with me"}]
 export default class CrosswordGenerator extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dimensions: [12,12],
+            dimensions: [11, 11],
             gridMatrix: MATRIX,//an array of objects x,y,dir,string,number
             clueList: CLUE_LIST,
             grid: [],
-            clues: []
-        };
-
-
+            clues: {}
+        }
+        ;
     }
-
     componentDidMount() {
         this.structure_Grid_Data();
     }
 
     structure_Grid_Data = () =>{
         let grid = [];
-        let clues = [];
+        let clues = {};
         for(let i = 1; i <= this.state.dimensions[0]; i++){
             for(let j = 0; j < this.state.dimensions[1]; j++){
                 let id = String.fromCharCode(65 + j) + i;
@@ -54,7 +53,7 @@ export default class CrosswordGenerator extends Component {
                 data_to_change.letter = word.clue.charAt(i);
                 let dirComponent = (word.d == 1) ? "Ac":"Dn";
                 if(data_to_change.clue != null){
-                    data_to_change.clue.append(dirComponent + word.num)
+                    data_to_change.clue.append(dirComponent + word.num);
                 }
                 else{
                     data_to_change.clues = [dirComponent + word.num];
@@ -63,10 +62,10 @@ export default class CrosswordGenerator extends Component {
                     data_to_change.label = word.num;
                 }
             })
-            let clue = this.state.clueList.find(x => x.num == word.num).clue;
+            let clue = this.state.clueList.find(x => x.word == word.clue).clue;
             let direction = (word.d == 1) ? "across" : "down";
-            let clueData = new Clue_Data(clue,word.clue,direction,word.num, boxes);
-            clues.push(clueData);
+            let dirKey = ((word.d == 1) ? "Ac":"Dn") + word.num;
+            clues[dirKey] =  new Clue_Data(clue,word.clue,direction,word.num, boxes);
         });
         this.setState({
             grid: grid,
@@ -80,6 +79,7 @@ export default class CrosswordGenerator extends Component {
     render() {
         return (
             <div className={'col-sm '}>
+                <Crossword clues={this.state.clues} grid={this.state.grid}/>
             </div>
 
         )
