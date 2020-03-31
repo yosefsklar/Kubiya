@@ -2,35 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="adcf82e9-6b07-45a1-98ee-c89add9c4ba4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/assets/Modal.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/assets/buttons.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/assets/footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/assets/textdisplay.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Buttons.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/styles/Modal.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AboutPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/AboutPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameLang.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameLang.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameOver.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EndGameModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GameText.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameText.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LabelBox.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MatchingGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MatchingGame.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MatchingRound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MatchingRound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NextBox.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StartGameModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StartGameModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TextBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TextBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TimeBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/assets/TimeBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/assets/SiteNavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/assets/SiteNavBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/AnswerInformer.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/AnswerInformer.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/MatchingRound.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/MatchingRound.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/StartGameModal.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/StartGameModal.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/TextBox.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/TextBox.module.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -89,27 +61,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/assets/SiteNavBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/assets/TimeBox.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="10" lean-forward="true" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/MatchingRound.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -121,11 +72,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/styles/MatchingRound.module.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
               <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/favicon.ico">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -160,7 +125,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>labelInfos</find>
       <find>prop</find>
       <find>textInfoA</find>
       <find>state</find>
@@ -190,6 +154,7 @@
       <find>Box</find>
       <find>Label</find>
       <find>BTN</find>
+      <find>favic</find>
     </findStrings>
     <replaceStrings>
       <replace>//console.log</replace>
@@ -214,7 +179,6 @@
         <option value="$PROJECT_DIR$/src/components/Desk.js" />
         <option value="$PROJECT_DIR$/src/components/Text.js" />
         <option value="$PROJECT_DIR$/src/components/DeskBuilder.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/StartGameModem.js" />
         <option value="$PROJECT_DIR$/src/styles/StartGameModal.css" />
         <option value="$PROJECT_DIR$/src/styles/AnswerInformer.css" />
@@ -253,13 +217,14 @@
         <option value="$PROJECT_DIR$/src/components/MatchingRound.js" />
         <option value="$PROJECT_DIR$/src/App.css" />
         <option value="$PROJECT_DIR$/src/styles/MatchingRound.module.css" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-12" />
-    <option name="width" value="981" />
-    <option name="height" value="1032" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="949" />
+    <option name="width" value="980" />
+    <option name="height" value="1031" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -274,6 +239,11 @@
             <path>
               <item name="my-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my-app" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="my-app" type="b2602c69:ProjectViewProjectNode" />
@@ -313,6 +283,9 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\yosef\Bloomberg_prep\my-app\public" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\yosef\Bloomberg_prep\my-app\src\components" />
       <recent name="C:\Users\yosef\Bloomberg_prep\my-app\src\components\assets" />
@@ -346,18 +319,18 @@
       <workItem from="1584542783761" duration="53261000" />
       <workItem from="1584973604061" duration="12563000" />
       <workItem from="1585063990441" duration="7940000" />
-      <workItem from="1585085063931" duration="48424000" />
+      <workItem from="1585085063931" duration="49453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="130140000" />
+    <option name="totallyTimeSpent" value="131169000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="633" y="0" width="653" height="687" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24483307" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -469,16 +442,6 @@
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/favicon.ico">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="473">
-          <caret line="28" column="215" selection-start-line="28" selection-start-column="215" selection-end-line="28" selection-end-column="215" />
         </state>
       </provider>
     </entry>
@@ -716,6 +679,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/favicon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
         </state>
       </provider>
     </entry>
