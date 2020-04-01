@@ -1,16 +1,25 @@
 import React, {Component} from 'react';
 import Crossword from "./Crossword";
+import {xWords} from "./classes/xword";
+
+const MATRIX = [{x: 0, y: 0, d: 2, clue: "חשונ", num: 1},{x: 4, y: 0, d: 2, clue: "אדר", num: 2},{x: 0, y: 2, d: 1, clue: "ויאמרמשה", num: 3},
+{x: 3, y: 2, d: 2, num: 4, clue: "מילהאלי"}, {x: 5, y: 2, d: 2, clue: "מכבי", num: 5},{x: 10, y: 3, d: 2, clue: "תמוז", num: 6},{x: 8, y: 4, d: 2, clue: "ניסנ", num: 7},
+    {x: 5, y: 5, d: 1, clue: "ירמיהו", num: 8},{x: 2, y: 8, d: 1, clue: "סיבנ", num: 9}]
+// const MATRIX =[{x:0,y:0,d:2,clue:"ויאמרמשה",num: 1},
+//     {x:6,y:0,d:2,clue:"מכבי",num:2},{x:0,y:3,d:1,clue:"מילהאלי",num:1}]
+const CLUE_LIST = [{word: "חשונ", clue: "sad month"},{word: "אדר", clue: "happy month"},{word: "ויאמרמשה", clue: "And God Said to Moses"},{word: "מכבי", clue: "The israeli basketball club"},{word: "מילהאלי", clue: "Who is with god? Come with me"},
+    {word: "תמוז", clue: "fast month"},{word: "ניסנ", clue: "fרקק month"},{word: "ירמיהו", clue: "the boss"},{word: "סיבנ", clue: "it just is"} ]
+
+const WORD_LIST = ["חשונ","אדר","ויאמרמשה", "מכבי", "מילהאלי","תמוז", "ניסנ", "ירמיהו", "סיבנ"]
 
 
-const MATRIX =[{x:0,y:0,d:2,clue:"ויאמרמשה",num: 1},
-    {x:6,y:0,d:2,clue:"מכבי",num:2},{x:0,y:3,d:1,clue:"מילהאלי",num:1}]
-const CLUE_LIST = [{word: "ויאמרמשה", clue: "And God Said to Moses"},{word: "מכבי", clue: "The israeli basketball club"},{word: "מילהאלי", clue: "Who is with god? Come with me"}]
 export default class CrosswordGenerator extends Component {
     constructor(props) {
         super(props);
+        xWords.Create(11,11,WORD_LIST);
         this.state = {
             dimensions: [11, 11],
-            gridMatrix: MATRIX,//an array of objects x,y,dir,string,number
+            gridMatrix: xWords.GetQuestionList(),//an array of objects x,y,dir,string,number
             clueList: CLUE_LIST,
             grid: [],
             clues: {}

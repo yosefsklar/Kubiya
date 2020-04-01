@@ -19,9 +19,9 @@ export default class Crossword extends Component {
         if(prevProps.clues != this.props.clues){
             console.log("Update! " + this.props.clues)
             this.setState({
-                activeClueBoxes: this.props.clues['Ac1'].boxes,
-                activeClue: ['Ac1'],
-                boxInFocus: this.props.clues['Ac1'].boxes[0]
+                activeClueBoxes: this.props.clues['Dn1'].boxes,
+                activeClue: ['Dn1'],
+                boxInFocus: this.props.clues['Dn1'].boxes[0]
             })
         }
 
