@@ -94,13 +94,13 @@ class Clues extends Component {
                 <div className="clue-list-wrapper">
                     <h2>Across</h2>
                     <ol className="clue-list">
-                        { this.state.across.map((clueData) => <Clue key={ clueData.id } clueID={ clueData.id } clueText={ clueData.clue } clueNumber={ clueData.number } clueBoxes={ clueData.boxes } setActiveClueBoxes={ this.props.setActiveClueBoxes } setActiveClue={ this.props.setActiveClue } isActive={ this.props.activeClue.indexOf(clueData.id) > -1 } setBoxInFocus={ this.props.setBoxInFocus }/>) }
+                        { this.state.across.map((clueData) => <Clue key={ clueData.id } clueID={ clueData.id } clueText={ clueData.clue } clueNumber={ clueData.number } clueBoxes={ clueData.boxes } clueDir={"across"} setActiveClueBoxes={ this.props.setActiveClueBoxes } setActiveClue={ this.props.setActiveClue } isActive={ this.props.activeClue.indexOf(clueData.id) > -1 } setBoxInFocus={ this.props.setBoxInFocus }/>) }
                     </ol>
                 </div>
                 <div className="clue-list-wrapper">
                     <h2>Down</h2>
                     <ol className="clue-list">
-                        { this.state.down.map((clueData) => <Clue key={ clueData.id } clueID={ clueData.id } clueText={ clueData.clue } clueNumber={ clueData.number } clueBoxes={ clueData.boxes } setActiveClueBoxes={ this.props.setActiveClueBoxes } setActiveClue={ this.props.setActiveClue } isActive={ this.props.activeClue.indexOf(clueData.id) > -1 } setBoxInFocus={ this.props.setBoxInFocus }/>)
+                        { this.state.down.map((clueData) => <Clue key={ clueData.id } clueID={ clueData.id } clueText={ clueData.clue } clueNumber={ clueData.number } clueBoxes={ clueData.boxes } clueDir={"down"} setActiveClueBoxes={ this.props.setActiveClueBoxes } setActiveClue={ this.props.setActiveClue } isActive={ this.props.activeClue.indexOf(clueData.id) > -1 } setBoxInFocus={ this.props.setBoxInFocus }/>)
                         }
                     </ol>
                 </div>
@@ -133,7 +133,14 @@ class Clue extends Component {
         activeClue.push(this.props.clueID);
         this.props.setActiveClueBoxes(this.props.clueBoxes);
         this.props.setActiveClue(activeClue);
-        this.props.setBoxInFocus(this.props.clueBoxes[0]);
+        if(this.props.clueDir == "down"){
+            this.props.setBoxInFocus(this.props.clueBoxes[0]);
+        }
+        else{
+            this.props.setBoxInFocus(this.props.clueBoxes[this.props.clueBoxes.length - 1]);
+        }
+
+
     }
 
     render() {
