@@ -16,7 +16,7 @@ export default class Crossword extends Component {
         this.setBoxInFocus = this.setBoxInFocus.bind(this);
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.clues != this.props.clues){
+        if(prevProps.clues !== this.props.clues){
             console.log("Update! " + this.props.clues)
             this.setState({
                 activeClueBoxes: this.props.clues['Dn1'].boxes,
@@ -41,18 +41,20 @@ export default class Crossword extends Component {
     }
 
     setBoxInFocus(box) {
+        console.log("setting box in ficus")
         this.setState({
             boxInFocus: box
         });
     }
 
   render() {
+        console.log("box in focus : " + this.state.boxInFocus)
         console.log("Render crossword ");
       //console.log(Object.keys(this.state.clues).length);
     return (
       <div className="crossword">
         <Clues clues={ this.props.clues } setActiveClueBoxes={ this.setActiveClueBoxes } activeClue={ this.state.activeClue } setActiveClue={ this.setActiveClue } setBoxInFocus={ this.setBoxInFocus } />
-        <Board grid={ this.props.grid } allClues={ this.props.clues } clues={ this.props.clues } setActiveClueBoxes={ this.setActiveClueBoxes } highlightedBoxes={ this.state.activeClueBoxes } setActiveClue = { this.setActiveClue } setBoxInFocus={ this.setBoxInFocus } boxInFocus={ this.state.boxInFocus }/>
+        <Board grid={ this.props.grid } allClues={ this.props.clues } clues={ this.props.clues } setActiveClueBoxes={ this.setActiveClueBoxes } highlightedBoxes={ this.state.activeClueBoxes } setActiveClue = { this.setActiveClue } setBoxInFocus={ this.setBoxInFocus } boxInFocus={ this.state.boxInFocus } dimensions={this.props.dimensions}/>
       </div>
     );
   }
@@ -71,10 +73,10 @@ class Clues extends Component {
         if(prevProps != this.props){
             const cluesAcross = [];
             const cluesDown = [];
-            console.log("printing clueS: ")
+           // console.log("printing clueS: ")
             for (const key in this.props.clues) {
                 const clue = this.props.clues[key];
-                console.log("printing clue " + key)
+               // console.log("printing clue " + key)
                 clue.id = key;
                 if (clue.direction === 'across') {
                     cluesAcross.push(clue);
@@ -122,17 +124,21 @@ class Clue extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
-    componentWillReceiveProps(newProps) {
-        this.setState({
-            active: newProps.isActive
-        });
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps !== this.props){
+            this.setState({
+                active: this.props.isActive
+            });
+        }
     }
+
 
     handleClick() {
         const activeClue = [];
         activeClue.push(this.props.clueID);
         this.props.setActiveClueBoxes(this.props.clueBoxes);
         this.props.setActiveClue(activeClue);
+        console.log("CueBoxes[0] (ClueClick) :" + this.props.clueBoxes[0])
         this.props.setBoxInFocus(this.props.clueBoxes[0]);
     }
 
@@ -151,16 +157,36 @@ class Clue extends Component {
 class Board extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            boxMatrix: [],
+            boxes: []
+        }
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps != this.props){
+            let boxes = this.props.grid.map((box) => {
+                const { id, letter, clues, label } = box;
+                return <Box key={ id } id={ id } letter={ letter } boxClues = { clues } label={ label } allClues={ this.props.allClues } isHighlighted={ this.props.highlightedBoxes.indexOf(id) > -1 } setActiveClueBoxes={ this.props.setActiveClueBoxes } setActiveClue={ this.props.setActiveClue } setBoxInFocus={ this.props.setBoxInFocus } isInFocus={ this.props.boxInFocus == id }/>
+            });
+            let boxMatrix = [];
+            for(let i = 0; i < this.props.dimensions[0];i++){
+                let row = [];
+                for(let j = 0; j < this.props.dimensions[1];j++){
+                    row.push(boxes[(i * this.props.dimensions[0]) + j]);
+                }
+                boxMatrix.push(row);
+            }
+            this.setState({
+                boxMatrix: boxMatrix,
+                boxes: boxes
+            })
+        }
     }
 
     render() {
         return (
             <div className="crossword-board">
-                { this.props.grid.map((box) => {
-                    const { id, letter, clues, label } = box;
-                    return <Box key={ id } id={ id } letter={ letter } boxClues = { clues } label={ label } allClues={ this.props.allClues } isHighlighted={ this.props.highlightedBoxes.indexOf(id) > -1 } setActiveClueBoxes={ this.props.setActiveClueBoxes } setActiveClue={ this.props.setActiveClue } setBoxInFocus={ this.props.setBoxInFocus } isInFocus={ this.props.boxInFocus == id }/>
-                })
-                }
+                {this.state.boxes}
             </div>
         );
     }
@@ -175,20 +201,25 @@ class Box extends Component {
         };
 
         this.handleFocus = this.handleFocus.bind(this);
-    }
-
-    componentWillReceiveProps(newProps) {
-        this.setState({
-            highlight: newProps.isHighlighted,
-            isInFocus: newProps.isInFocus
-        });
-    }
-
-    componentDidUpdate() {
-        if (this.state.isInFocus) {
-            this.textInput.focus();
+        if (this.props.isInFocus) {
+            console.log(this.props.id + " is focused");
         }
     }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps != this.props) {
+            //clue clicking instigated the focus
+            if (this.props.isInFocus) {
+                console.log(this.props.id + " is focused");
+                this.textInput.focus();
+            }
+            this.setState({
+                highlight: this.props.isHighlighted,
+                isInFocus: this.props.isInFocus
+            });
+        }
+    }
+
 
     handleFocus(event) {
         this.props.setActiveClue(this.props.boxClues);
@@ -200,7 +231,18 @@ class Box extends Component {
         }
 
         this.props.setActiveClueBoxes(boxesToHighlight);
+        console.log("event.target.is : " + event.target.id);
         this.props.setBoxInFocus(event.target.id);
+    }
+
+    uniKeyCode(event) {
+        let key = event.keyCode;
+        alert("Unicode KEY code: " + key);
+    }
+
+    uniCharCode(event) {
+        let char = event.which || event.keyCode;
+        alert("Unicode CHARACTER code: " + char);
     }
 
     render() {
@@ -208,11 +250,11 @@ class Box extends Component {
         let input;
 
         if (this.props.label) {
-            visibleLabel = <span className="box-label">{ this.props.label }</span>
+            visibleLabel = <span className="box-label">{this.props.label}</span>
         }
 
         if (this.props.letter) {
-            input = <input type="text" maxLength="1" className={ `box-input ${this.state.highlight ? 'highlight' : ''}` } onFocus={ this.handleFocus } ref={(input) => { this.textInput = input }} />
+            input = <input type="text" maxLength="1" className={ `box-input ${this.state.highlight ? 'highlight' : ''}` } onFocus={ this.handleFocus } onKeyPress={this.uniCharCode} onKeyDown={this.uniKeyCode} ref={(input) => { this.textInput = input }} />
         }
 
         return (

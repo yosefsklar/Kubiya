@@ -67,8 +67,15 @@ export default class CrosswordGenerator extends Component {
                 else{
                     data_to_change.clues = [dirComponent + word.num];
                 }
-                if(i == 0){
-                    data_to_change.label = word.num;
+                if(word.d == 1){
+                    if(i == word.clue.length - 1){
+                        data_to_change.label = word.num;
+                    }
+                }
+                else{
+                    if(i == 0){
+                        data_to_change.label = word.num;
+                    }
                 }
             })
             let clue = this.state.clueList.find(x => x.word == word.clue).clue;
@@ -88,7 +95,7 @@ export default class CrosswordGenerator extends Component {
     render() {
         return (
             <div className={'col-sm '}>
-                <Crossword clues={this.state.clues} grid={this.state.grid}/>
+                <Crossword clues={this.state.clues} grid={this.state.grid} dimensions={this.state.dimensions}/>
             </div>
 
         )

@@ -70,6 +70,7 @@ $box-border: 1px;
     height: $box-size - $box-border;
     border: 0;
     padding: 0;
+    text-align: center;
 &:nth-child(11n+1) {
      width: $box-size - $box-border;
  }
