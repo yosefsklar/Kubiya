@@ -17,10 +17,11 @@ export default class Crossword extends Component {
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.clues !== this.props.clues){
+            let key = Object.keys(this.props.clues)[1];
             this.setState({
-                activeClueBoxes: this.props.clues['Dn1'].boxes,
-                activeClue: ['Dn1'],
-                boxInFocus: this.props.clues['Dn1'].boxes[0]
+                activeClueBoxes: this.props.clues[key].boxes,
+                activeClue: [key],
+                boxInFocus: this.props.clues[key].boxes[0]
             })
         }
 
@@ -162,18 +163,19 @@ class Board extends Component {
             boxMatrix: [],
             boxes: []
         }
+        this.isBoxFilled = this.isBoxFilled.bind(this)
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps != this.props){
             let boxes = this.props.grid.map((box) => {
                 const { id, letter, clues, label } = box;
-                return <Box key={ id } id={ id } letter={ letter } boxClues = { clues } label={ label } allClues={ this.props.allClues } isHighlighted={ this.props.highlightedBoxes.indexOf(id) > -1 } setActiveClueBoxes={ this.props.setActiveClueBoxes } setActiveClue={ this.props.setActiveClue } setBoxInFocus={ this.props.setBoxInFocus } isInFocus={ this.props.boxInFocus == id }/>
+                return <Box key={ id } id={ id } letter={ letter } boxMatrix={this.state.boxMatrix} boxClues = { clues } label={ label } allClues={ this.props.allClues } isHighlighted={ this.props.highlightedBoxes.indexOf(id) > -1 } setActiveClueBoxes={ this.props.setActiveClueBoxes } setActiveClue={ this.props.setActiveClue } setBoxInFocus={ this.props.setBoxInFocus } isInFocus={ this.props.boxInFocus == id } dimensions={this.props.dimensions} isBoxFilled={this.isBoxFilled}/>
             });
             let boxMatrix = [];
-            for(let i = 0; i < this.props.dimensions[0];i++){
+            for(let i = 0; i < this.props.dimensions[1];i++){
                 let row = [];
-                for(let j = 0; j < this.props.dimensions[1];j++){
-                    row.push(boxes[(i * this.props.dimensions[0]) + j]);
+                for(let j = 0; j < this.props.dimensions[0];j++){
+                    row.push(boxes[(i * this.props.dimensions[1]) + j]);
                 }
                 boxMatrix.push(row);
             }
@@ -182,6 +184,10 @@ class Board extends Component {
                 boxes: boxes
             })
         }
+    }
+
+    isBoxFilled =(id) =>{
+            return !(this.props.grid.find(x => x.id == id).letter == null);
     }
 
     render() {
@@ -202,6 +208,8 @@ class Box extends Component {
         };
 
         this.handleFocus = this.handleFocus.bind(this);
+        this.uniCharCode = this.uniCharCode.bind(this);
+        this.uniKeyCode = this.uniKeyCode.bind(this);
         if (this.props.isInFocus) {
         }
     }
@@ -235,12 +243,52 @@ class Box extends Component {
 
     uniKeyCode(event) {
         let key = event.keyCode;
-        alert("Unicode KEY code: " + key);
+        let x = this.props.id.charCodeAt(0) - 65;
+        let y = parseInt(this.props.id.charAt(1));
+        if(key == 37){
+            if(x > 0){
+                x -= 1;
+                let id = String.fromCharCode(x+ 65) + y;
+                if(this.props.isBoxFilled(id)){
+                    this.props.setBoxInFocus(id);
+                }
+            }
+
+        }
+        else if(key == 38){
+            if(y > 0){
+                y -= 1;
+                let id = String.fromCharCode(x+ 65) + y;
+                if(this.props.isBoxFilled(id)){
+                    this.props.setBoxInFocus(id);
+                }
+            }
+        }
+        else if(key == 39){
+            if(x < this.props.dimensions[0]  - 1){
+                x += 1;
+                let id = String.fromCharCode(x+ 65) + y;
+                if(this.props.isBoxFilled(id)){
+                    this.props.setBoxInFocus(id);
+                }
+            }
+        }
+        else if(key == 40){
+
+            if(y < this.props.dimensions[1]  - 1){
+                y += 1;
+                let id = String.fromCharCode(x+ 65) + y;
+                if(this.props.isBoxFilled(id)){
+                    this.props.setBoxInFocus(id);
+                }
+            }
+        }
     }
 
     uniCharCode(event) {
         let char = event.which || event.keyCode;
-        alert("Unicode CHARACTER code: " + char);
+        alert('Char : ' + char);
+
     }
 
     render() {

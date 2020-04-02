@@ -213,28 +213,14 @@ export const xWords = {
 
         this.QuestionList = this.SortXwordQuestions(this.QuestionList);
 
-        let counterHor = 1;
-        let counterVer = 1;
+        var counter = 0
         for (var k = 0; k < this.QuestionList.length; k++){
             if (this.QuestionGrid[this.QuestionList[k].x][this.QuestionList[k].y].length == 0){
+                counter++;
                 this.QuestionGrid[this.QuestionList[k].x][this.QuestionList[k].y] = counter.toString();
-                if(this.QuestionList[k].d == 1){
-                    this.QuestionList[k].num = counterHor;
-                    counterHor++;
-                }
-                else{
-                    this.QuestionList[k].num = counterVer;
-                    counterVer++;
-                }
+                this.QuestionList[k].num = counter;
             } else {
-                if(this.QuestionList[k].d == 1){
-                    this.QuestionList[k].num = counterHor;
-                    counterHor++;
-                }
-                else{
-                    this.QuestionList[k].num = counterVer;
-                    counterVer++;
-                }
+                this.QuestionList[k].num = counter;
             }
         }
     },
