@@ -4,8 +4,6 @@
     <list default="true" id="adcf82e9-6b07-45a1-98ee-c89add9c4ba4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Crossword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Crossword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CrosswordGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CrosswordGenerator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/Crossword.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Crossword.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Crossword.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="1022" column="69" lean-forward="true" selection-start-line="1022" selection-start-column="69" selection-end-line="1022" selection-end-column="69" />
+            <state relative-caret-position="76">
+              <caret line="68" column="35" lean-forward="true" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -46,18 +44,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/classes/xword.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="36" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/CrosswordGenerator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1972">
+            <state relative-caret-position="1700">
               <caret line="116" column="52" selection-start-line="116" selection-start-column="49" selection-end-line="116" selection-end-column="52" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -156,9 +145,9 @@
       <find>boxInFoc</find>
       <find>setBo</find>
       <find>setBoxInFocus</find>
-      <find>console</find>
       <find>will</find>
       <find>Will</find>
+      <find>console</find>
     </findStrings>
     <replaceStrings>
       <replace>//console.log</replace>
@@ -358,7 +347,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165297000" />
+    <option name="totallyTimeSpent" value="165441000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -383,6 +372,26 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.05564388" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.053285968" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3321492" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -668,7 +677,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/CrosswordGenerator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1972">
+        <state relative-caret-position="1700">
           <caret line="116" column="52" selection-start-line="116" selection-start-column="49" selection-end-line="116" selection-end-column="52" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
@@ -719,8 +728,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Crossword.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="1022" column="69" lean-forward="true" selection-start-line="1022" selection-start-column="69" selection-end-line="1022" selection-end-column="69" />
+        <state relative-caret-position="76">
+          <caret line="68" column="35" lean-forward="true" selection-start-line="68" selection-start-column="35" selection-end-line="68" selection-end-column="35" />
         </state>
       </provider>
     </entry>

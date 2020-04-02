@@ -17,7 +17,6 @@ export default class Crossword extends Component {
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.clues !== this.props.clues){
-            console.log("Update! " + this.props.clues)
             this.setState({
                 activeClueBoxes: this.props.clues['Dn1'].boxes,
                 activeClue: ['Dn1'],
@@ -41,16 +40,12 @@ export default class Crossword extends Component {
     }
 
     setBoxInFocus(box) {
-        console.log("setting box in ficus")
         this.setState({
             boxInFocus: box
         });
     }
 
   render() {
-        console.log("box in focus : " + this.state.boxInFocus)
-        console.log("Render crossword ");
-      //console.log(Object.keys(this.state.clues).length);
     return (
       <div className="crossword">
         <Clues clues={ this.props.clues } setActiveClueBoxes={ this.setActiveClueBoxes } activeClue={ this.state.activeClue } setActiveClue={ this.setActiveClue } setBoxInFocus={ this.setBoxInFocus } />
@@ -138,7 +133,6 @@ class Clue extends Component {
         activeClue.push(this.props.clueID);
         this.props.setActiveClueBoxes(this.props.clueBoxes);
         this.props.setActiveClue(activeClue);
-        console.log("CueBoxes[0] (ClueClick) :" + this.props.clueBoxes[0])
         this.props.setBoxInFocus(this.props.clueBoxes[0]);
     }
 
@@ -202,7 +196,6 @@ class Box extends Component {
 
         this.handleFocus = this.handleFocus.bind(this);
         if (this.props.isInFocus) {
-            console.log(this.props.id + " is focused");
         }
     }
 
@@ -210,7 +203,6 @@ class Box extends Component {
         if(prevProps != this.props) {
             //clue clicking instigated the focus
             if (this.props.isInFocus) {
-                console.log(this.props.id + " is focused");
                 this.textInput.focus();
             }
             this.setState({
@@ -231,8 +223,7 @@ class Box extends Component {
         }
 
         this.props.setActiveClueBoxes(boxesToHighlight);
-        console.log("event.target.is : " + event.target.id);
-        this.props.setBoxInFocus(event.target.id);
+        this.props.setBoxInFocus(this.props.id);
     }
 
     uniKeyCode(event) {
