@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import Crossword from "./Crossword";
 import {xWords} from "./classes/xword";
 
-const MATRIX = [{x: 0, y: 0, d: 2, clue: "חשונ", num: 1},{x: 4, y: 0, d: 2, clue: "אדר", num: 2},{x: 0, y: 2, d: 1, clue: "ויאמרמשה", num: 3},
-{x: 3, y: 2, d: 2, num: 4, clue: "מילהאלי"}, {x: 5, y: 2, d: 2, clue: "מכבי", num: 5},{x: 10, y: 3, d: 2, clue: "תמוז", num: 6},{x: 8, y: 4, d: 2, clue: "ניסנ", num: 7},
-    {x: 5, y: 5, d: 1, clue: "ירמיהו", num: 8},{x: 2, y: 8, d: 1, clue: "סיבנ", num: 9}]
+// const MATRIX = [{x: 0, y: 0, d: 2, clue: "חשונ", num: 1},{x: 4, y: 0, d: 2, clue: "אדר", num: 2},{x: 0, y: 2, d: 1, clue: "ויאמרמשה", num: 3},
+// {x: 3, y: 2, d: 2, num: 4, clue: "מילהאלי"}, {x: 5, y: 2, d: 2, clue: "מכבי", num: 5},{x: 10, y: 3, d: 2, clue: "תמוז", num: 6},{x: 8, y: 4, d: 2, clue: "ניסנ", num: 7},
+//     {x: 5, y: 5, d: 1, clue: "ירמיהו", num: 8},{x: 2, y: 8, d: 1, clue: "סיבנ", num: 9}]
 // const MATRIX =[{x:0,y:0,d:2,clue:"ויאמרמשה",num: 1},
 //     {x:6,y:0,d:2,clue:"מכבי",num:2},{x:0,y:3,d:1,clue:"מילהאלי",num:1}]
 const CLUE_LIST = [{word: "חשונ", clue: "sad month"},{word: "אדר", clue: "happy month"},{word: "ויאמרמשה", clue: "And God Said to Moses"},{word: "מכבי", clue: "The israeli basketball club"},{word: "מילהאלי", clue: "Who is with god? Come with me"},
@@ -42,6 +42,10 @@ export default class CrosswordGenerator extends Component {
         }
         console.log(grid);
 
+        let labelCount = 1;
+        let currentLabel = 0;
+        let labelOffset = 0;
+
         this.state.gridMatrix.forEach( word => {
             let boxes = [];
             [...word.clue].forEach( (letter, i) => {
@@ -61,27 +65,43 @@ export default class CrosswordGenerator extends Component {
                 let data_to_change = grid.find(x => x.id === id);
                 data_to_change.letter = word.clue.charAt(i);
                 let dirComponent = (word.d == 1) ? "Ac":"Dn";
-                if(data_to_change.clue != null){
-                    data_to_change.clue.append(dirComponent + word.num);
+                if(data_to_change.clues != null){
+                    data_to_change.clues.push(dirComponent + word.num);
                 }
                 else{
                     data_to_change.clues = [dirComponent + word.num];
                 }
                 if(word.d == 1){
                     if(i == word.clue.length - 1){
-                        data_to_change.label = word.num;
+                        if(data_to_change.label != null){
+                            currentLabel = data_to_change.label;
+                            labelOffset++;
+                        }
+                        else{
+                            data_to_change.label = labelCount - labelOffset;
+                            currentLabel = labelCount - labelOffset;
+                        }
                     }
+
                 }
                 else{
                     if(i == 0){
-                        data_to_change.label = word.num;
+                        if(data_to_change.label != null){
+                            currentLabel = data_to_change.label;
+                            labelOffset++;
+                        }
+                        else{
+                            data_to_change.label = labelCount - labelOffset;
+                            currentLabel = labelCount - labelOffset;
+                        }
                     }
                 }
             })
             let clue = this.state.clueList.find(x => x.word == word.clue).clue;
             let direction = (word.d == 1) ? "across" : "down";
             let dirKey = ((word.d == 1) ? "Ac":"Dn") + word.num;
-            clues[dirKey] =  new Clue_Data(clue,word.clue,direction,word.num, boxes);
+            clues[dirKey] =  new Clue_Data(clue,word.clue,direction,currentLabel, boxes);
+            labelCount++;
         });
         this.setState({
             grid: grid,

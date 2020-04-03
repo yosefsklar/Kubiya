@@ -208,8 +208,8 @@ class Box extends Component {
         };
 
         this.handleFocus = this.handleFocus.bind(this);
-        this.uniCharCode = this.uniCharCode.bind(this);
         this.uniKeyCode = this.uniKeyCode.bind(this);
+        this.uniKeyUp = this.uniKeyUp.bind(this);
         if (this.props.isInFocus) {
         }
     }
@@ -283,12 +283,33 @@ class Box extends Component {
                 }
             }
         }
+
     }
 
-    uniCharCode(event) {
-        let char = event.which || event.keyCode;
-        alert('Char : ' + char);
-
+    uniKeyUp(event) {
+        let key = event.keyCode;
+        let x = this.props.id.charCodeAt(0) - 65;
+        let y = parseInt(this.props.id.charAt(1));
+        if (key >= 65 && key <= 90){
+                if(this.props.boxClues[0].charAt(0) == 'A'){
+                    if(x > 0){
+                        x -= 1;
+                        let id = String.fromCharCode(x+ 65) + y;
+                        if(this.props.isBoxFilled(id)){
+                            this.props.setBoxInFocus(id);
+                        }
+                    }
+                }
+                else{
+                    if(y < this.props.dimensions[1]  - 1){
+                        y += 1;
+                        let id = String.fromCharCode(x+ 65) + y;
+                        if(this.props.isBoxFilled(id)){
+                            this.props.setBoxInFocus(id);
+                        }
+                    }
+                }
+            }
     }
 
     render() {
@@ -300,7 +321,7 @@ class Box extends Component {
         }
 
         if (this.props.letter) {
-            input = <input type="text" maxLength="1" className={ `box-input ${this.state.highlight ? 'highlight' : ''}` } onFocus={ this.handleFocus } onKeyPress={this.uniCharCode} onKeyDown={this.uniKeyCode} ref={(input) => { this.textInput = input }} />
+            input = <input type="text" maxLength="1" className={ `box-input ${this.state.highlight ? 'highlight' : ''}` } onFocus={ this.handleFocus } onKeyDown={this.uniKeyCode} onKeyUp={this.uniKeyUp} ref={(input) => { this.textInput = input }} />
         }
 
         return (

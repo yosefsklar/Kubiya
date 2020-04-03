@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="adcf82e9-6b07-45a1-98ee-c89add9c4ba4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/components/Crossword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Crossword.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/classes/xword.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/classes/xword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CrosswordGenerator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CrosswordGenerator.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,11 +25,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Crossword.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="253" column="17" selection-start-line="253" selection-start-column="17" selection-end-line="253" selection-end-column="17" />
+            <state relative-caret-position="-34">
+              <caret line="103" column="143" selection-start-line="103" selection-start-column="136" selection-end-line="103" selection-end-column="143" />
+              <folding>
+                <element signature="e#32#71#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -37,17 +40,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/styles/Crossword.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="79" column="9" lean-forward="true" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
+            <state>
+              <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/CrosswordGenerator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1938">
-              <caret line="116" column="52" selection-start-line="116" selection-start-column="49" selection-end-line="116" selection-end-column="52" />
+            <state relative-caret-position="391">
+              <caret line="88" column="55" selection-start-line="88" selection-start-column="55" selection-end-line="88" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -56,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/classes/xword.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3757">
-              <caret line="221" column="20" lean-forward="true" selection-start-line="221" selection-start-column="20" selection-end-line="221" selection-end-column="20" />
+              <caret line="221" column="20" selection-start-line="221" selection-start-column="20" selection-end-line="221" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -124,16 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>this.setS</find>
-      <find>allClue</find>
-      <find>time2</find>
-      <find>dirco</find>
-      <find>clye</find>
-      <find>jo</find>
-      <find>across</find>
-      <find>isIn</find>
-      <find>lick</find>
-      <find>setbox</find>
       <find>boxes</find>
       <find>active</find>
       <find>highli</find>
@@ -141,7 +134,6 @@
       <find>isHigh</find>
       <find>highlight</find>
       <find>isInFocus</find>
-      <find>label</find>
       <find>box</find>
       <find>boxMatrix</find>
       <find>boxInFoc</find>
@@ -149,11 +141,22 @@
       <find>setBoxInFocus</find>
       <find>will</find>
       <find>Will</find>
-      <find>num</find>
       <find>uestio</find>
-      <find>console</find>
-      <find>uestionLi</find>
       <find>counter</find>
+      <find>console</find>
+      <find>label</find>
+      <find>clues</find>
+      <find>clueNumber</find>
+      <find>num</find>
+      <find>allClue</find>
+      <find>data_to_change.clue</find>
+      <find>this.props.bo</find>
+      <find>boxClues</find>
+      <find>count</find>
+      <find>uestionLi</find>
+      <find>currentN</find>
+      <find>data_to_change.lab</find>
+      <find>clueNum</find>
     </findStrings>
     <replaceStrings>
       <replace>//console.log</replace>
@@ -221,10 +224,10 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/styles/Crossword.module.css" />
         <option value="$PROJECT_DIR$/src/components/pages/AboutPage.js" />
-        <option value="$PROJECT_DIR$/src/components/CrosswordGenerator.js" />
         <option value="$PROJECT_DIR$/src/styles/Crossword.scss" />
         <option value="$PROJECT_DIR$/src/components/classes/xword.js" />
         <option value="$PROJECT_DIR$/src/components/Crossword.js" />
+        <option value="$PROJECT_DIR$/src/components/CrosswordGenerator.js" />
       </list>
     </option>
   </component>
@@ -309,6 +312,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -353,13 +357,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172608000" />
+    <option name="totallyTimeSpent" value="184131000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29332274" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10969793" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -660,13 +664,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/pages/AboutPage.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -708,31 +705,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/classes/xword.js">
+    <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3757">
-          <caret line="221" column="20" lean-forward="true" selection-start-line="221" selection-start-column="20" selection-end-line="221" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/CrosswordGenerator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="116" column="52" selection-start-line="116" selection-start-column="49" selection-end-line="116" selection-end-column="52" />
+        <state relative-caret-position="119">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/Crossword.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="79" column="9" lean-forward="true" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
+        <state>
+          <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/classes/xword.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3757">
+          <caret line="221" column="20" selection-start-line="221" selection-start-column="20" selection-end-line="221" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Crossword.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="253" column="17" selection-start-line="253" selection-start-column="17" selection-end-line="253" selection-end-column="17" />
+        <state relative-caret-position="-34">
+          <caret line="103" column="143" selection-start-line="103" selection-start-column="136" selection-end-line="103" selection-end-column="143" />
+          <folding>
+            <element signature="e#32#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/CrosswordGenerator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="88" column="55" selection-start-line="88" selection-start-column="55" selection-end-line="88" selection-end-column="55" />
         </state>
       </provider>
     </entry>
