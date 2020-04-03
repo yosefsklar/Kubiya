@@ -50,7 +50,7 @@ export default class Crossword extends Component {
     return (
       <div className="crossword">
         <Clues clues={ this.props.clues } setActiveClueBoxes={ this.setActiveClueBoxes } activeClue={ this.state.activeClue } setActiveClue={ this.setActiveClue } setBoxInFocus={ this.setBoxInFocus } />
-        <Board grid={ this.props.grid } allClues={ this.props.clues } clues={ this.props.clues } setActiveClueBoxes={ this.setActiveClueBoxes } highlightedBoxes={ this.state.activeClueBoxes } setActiveClue = { this.setActiveClue } setBoxInFocus={ this.setBoxInFocus } boxInFocus={ this.state.boxInFocus } dimensions={this.props.dimensions}/>
+        <Board grid={ this.props.grid } allClues={ this.props.clues } clues={ this.props.clues } setActiveClueBoxes={ this.setActiveClueBoxes } highlightedBoxes={ this.state.activeClueBoxes } setActiveClue = { this.setActiveClue } activeClueBoxes={this.state.activeClueBoxes} setBoxInFocus={ this.setBoxInFocus } boxInFocus={ this.state.boxInFocus } dimensions={this.props.dimensions}/>
       </div>
     );
   }
@@ -169,7 +169,7 @@ class Board extends Component {
         if(prevProps != this.props){
             let boxes = this.props.grid.map((box) => {
                 const { id, letter, clues, label } = box;
-                return <Box key={ id } id={ id } letter={ letter } boxMatrix={this.state.boxMatrix} boxClues = { clues } label={ label } allClues={ this.props.allClues } isHighlighted={ this.props.highlightedBoxes.indexOf(id) > -1 } setActiveClueBoxes={ this.props.setActiveClueBoxes } setActiveClue={ this.props.setActiveClue } setBoxInFocus={ this.props.setBoxInFocus } isInFocus={ this.props.boxInFocus == id } dimensions={this.props.dimensions} isBoxFilled={this.isBoxFilled}/>
+                return <Box key={ id } id={ id } letter={ letter } boxMatrix={this.state.boxMatrix} boxClues = { clues } label={ label } allClues={ this.props.allClues } isHighlighted={ this.props.highlightedBoxes.indexOf(id) > -1 } setActiveClueBoxes={ this.props.setActiveClueBoxes } setActiveClue={ this.props.setActiveClue } activeClueBoxes={this.props.activeClueBoxes} setBoxInFocus={ this.props.setBoxInFocus } boxInFocus={this.props.boxInFocus}  dimensions={this.props.dimensions} isBoxFilled={this.isBoxFilled}/>
             });
             let boxMatrix = [];
             for(let i = 0; i < this.props.dimensions[1];i++){
@@ -204,20 +204,18 @@ class Box extends Component {
         super(props);
         this.state = {
             highlight: props.isHighlighted,
-            isInFocus: props.isInFocus
+            isInFocus: (props.boxInFocus == this.props.id)
         };
 
         this.handleFocus = this.handleFocus.bind(this);
         this.uniKeyCode = this.uniKeyCode.bind(this);
         this.uniKeyUp = this.uniKeyUp.bind(this);
-        if (this.props.isInFocus) {
-        }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps != this.props) {
             //clue clicking instigated the focus
-            if (this.props.isInFocus) {
+            if ((this.props.boxInFocus == this.props.id)) {
                 this.textInput.focus();
             }
             this.setState({
@@ -229,16 +227,18 @@ class Box extends Component {
 
 
     handleFocus(event) {
-        this.props.setActiveClue(this.props.boxClues);
+        //if the focus happened as a result of a click only and not propigation
+        if(!(this.props.activeClueBoxes.includes(this.props.id))){
+            this.props.setActiveClue(this.props.boxClues);
 
-        let boxesToHighlight = [];
+            let boxesToHighlight = [];
+            for (const clue of this.props.boxClues) {
+                boxesToHighlight = boxesToHighlight.concat(this.props.allClues[clue].boxes);
+            }
 
-        for (const clue of this.props.boxClues) {
-            boxesToHighlight = boxesToHighlight.concat(this.props.allClues[clue].boxes);
+            this.props.setActiveClueBoxes(boxesToHighlight);
+            this.props.setBoxInFocus(this.props.id);
         }
-
-        this.props.setActiveClueBoxes(boxesToHighlight);
-        this.props.setBoxInFocus(this.props.id);
     }
 
     uniKeyCode(event) {
