@@ -256,7 +256,7 @@ class Box extends Component {
 
         }
         else if(key == 38){
-            if(y > 0){
+            if(y > 1){
                 y -= 1;
                 let id = String.fromCharCode(x+ 65) + y;
                 if(this.props.isBoxFilled(id)){
@@ -265,7 +265,7 @@ class Box extends Component {
             }
         }
         else if(key == 39){
-            if(x < this.props.dimensions[0]  - 1){
+            if(x < this.props.dimensions[0] - 1){
                 x += 1;
                 let id = String.fromCharCode(x+ 65) + y;
                 if(this.props.isBoxFilled(id)){
@@ -275,7 +275,7 @@ class Box extends Component {
         }
         else if(key == 40){
 
-            if(y < this.props.dimensions[1]  - 1){
+            if(y <= this.props.dimensions[1]){
                 y += 1;
                 let id = String.fromCharCode(x+ 65) + y;
                 if(this.props.isBoxFilled(id)){
