@@ -3,7 +3,17 @@
     border-radius: 25px;
     box-shadow: 0 2px 1px darkgray;
     margin: 10px 0px;
+    padding: .80rem;
     width: 100%;
     transition: all 0.3s ease-in;
+    font-size: 1.4rem;
+
+}
+
+.Hebrew{
     direction:rtl;
+}
+
+.English{
+    direction: ltr;
 }

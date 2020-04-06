@@ -13,9 +13,12 @@ const P = new Parser();
 export default class MatchingRound extends Component {
     constructor(props) {
         super(props);
-        let userTexts = this.selectRandomTexts(3, TextChapters[this.props.text]);
+        let labelTextNames = this.selectRandomTexts(3, TextChapters[this.props.text]);
         this.state = {
-            userTexts: userTexts,
+            labelTextNames: labelTextNames,
+            //chapters
+            //textinfos should include verse numbers
+            //then functionally get the context
             textInfos: [],
             labels: [],
             round: 0,
@@ -29,8 +32,8 @@ export default class MatchingRound extends Component {
 
 
     componentDidMount(){
-        this.getTextInfo(this.state.userTexts);
-        this.getLabels(this.state.userTexts);
+        this.getTextInfo(this.state.labelTextNames);
+        this.getLabels(this.state.labelTextNames);
     }
 
 
@@ -51,7 +54,7 @@ export default class MatchingRound extends Component {
                 }).then((data) => {
                     data['text'] = P.cleanText(data.text);
                     let vn = this.chooseRandomVerse(data.text);
-                    return(new TextInfo(data.indexTitle, data.heTitle, data.he[vn], data.text[vn]));
+                    return(new TextInfo(data.indexTitle, data.heTitle,vn,subtextNumber, data.he, data.text));
                 });
         })).then(values => {
             console.log("Text Values");
@@ -103,22 +106,22 @@ export default class MatchingRound extends Component {
 
     resetRoundHandler = (score,correct) =>{
         //window.alert("hi");
-        this.userTexts = this.selectRandomTexts(3, TextChapters[this.props.text]);
-        console.log("After Click " + this.userTexts);
+        this.labelTextNames = this.selectRandomTexts(3, TextChapters[this.props.text]);
+        console.log("After Click " + this.labelTextNames);
         this.props.updateScoreHandler(score);
-        let correctAnswer = this.state.textInfos[0].textNameEnglish;
+        let correctAnswer = this.state.textInfos[0];
         this.setState({
-            userTexts : this.userTexts,
+            labelTextNames : this.labelTextNames,
             clue: 1,
             answeredCorrectly: correct,
             answerInform : true,
             correctAnswer: correctAnswer,
             addedPoints: score
         }, () => {
-            console.log("Post Click state" + this.state.userTexts);
+            console.log("Post Click state" + this.state.labelTextNames);
             this.correctAnswerShow();
-            this.getTextInfo(this.state.userTexts);
-            this.getLabels(this.state.userTexts);
+            this.getTextInfo(this.state.labelTextNames);
+            this.getLabels(this.state.labelTextNames);
         });
     }
 
@@ -130,7 +133,7 @@ export default class MatchingRound extends Component {
                 round : this.state.round + 1,
             });
             clearInterval(timer);
-        },1500)
+        },3000)
 
     }
 
@@ -149,13 +152,18 @@ export default class MatchingRound extends Component {
 
     chooseRandomSubtext(textName, textDict){
          let num = Math.ceil(Math.random() * textDict[textName]);
-         if(textDict[0] == 'Berakhot' && textDict[textDict[0]] == 64){
+         if(Object.keys(textDict)[0] == 'Berakhot' && textDict[Object.keys(textDict)[0]] == 64){
+             if(textName == "Tamid"){
+                 num = (num % 6) +26;
+                 let daf = Math.round(Math.random())
+                 return num.toString() + (daf == 0 ? 'a':'b');
+             }
              if(num == 1){
                  num = 2;
                  let daf = Math.round(Math.random())
-                 return num.toString() (daf == 0 ? 'a':'b');
+                 return num.toString() + (daf == 0 ? 'a':'b');
              }
-             num = num -1;
+             num = num - 1;
              let daf = Math.round(Math.random());
              return num.toString() + (daf == 0 ? 'a':'b');
          }
@@ -201,13 +209,10 @@ render(){
                 return false;
             }).map((text, i) => {
                 //console.log("text " + i + " " + text.textNameEnglish);
-            return (<TextBox key={i + (this.state.textInfos.length * this.props.round)} lang={this.props.lang} textEnglish={text.textEnglish}
-                                                                           textHebrew={text.textHebrew}/>)});
+            return (<TextBox key={i + (this.state.textInfos.length * this.props.round)} lang={this.props.lang} showText={text}/>)});
             labelCompArray = this.state.labels.map((label, i) => {
                // console.log("label " + i + " " + label.textNameEnglish);
-                return(<BtnAnswer key={i + (this.state.textInfos.length * this.props.round)} answerEnglish={label.textNameEnglish}
-                                                                           answerHebrew={label.textNameHebrew}
-                                                                           correct={label.correct}
+                return(<BtnAnswer key={i + (this.state.textInfos.length * this.props.round)} label={label}
                                                                            clue={this.state.clue}
                                                                             lang={this.props.lang}
                                                                            resetRoundHandler={this.resetRoundHandler}/>)});
@@ -217,7 +222,7 @@ render(){
         }
         let answerInform = '';
         if(this.state.answerInform){
-            answerInform = <AnswerInformer correct={this.state.answeredCorrectly} answer={this.state.correctAnswer} addedPoints={this.state.addedPoints}/>
+            answerInform = <AnswerInformer correct={this.state.answeredCorrectly} answer={this.state.correctAnswer} addedPoints={this.state.addedPoints} lang={this.props.lang} text={this.props.text}/>
         }
         // console.log("the final arrays")
         // console.log(textCompArray);
@@ -246,9 +251,11 @@ render(){
 }
 
 class TextInfo {
-    constructor(textNameEnglish,textNameHebrew,textHebrew,textEnglish){
+    constructor(textNameEnglish,textNameHebrew,verseNumber,chapter,textHebrew,textEnglish){
         this.textNameEnglish = textNameEnglish;
         this.textNameHebrew = textNameHebrew;
+        this.verseNumber = verseNumber;
+        this.chapter = chapter;
         this.textHebrew = textHebrew;
         this.textEnglish = textEnglish;
     }

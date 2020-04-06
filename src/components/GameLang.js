@@ -14,7 +14,6 @@ const GameLang = (props) => {
                 <div className={'row'}>
                     <BtnConfig setConfig={() => props.setLang('hebrew')}>Hebrew</BtnConfig>
                     <BtnConfig setConfig={() => props.setLang('english')}>English</BtnConfig>
-                    <BtnConfig setConfig={() => props.setLang('both')}>Both</BtnConfig>
                 </div>
             </div>
         </Modal>
