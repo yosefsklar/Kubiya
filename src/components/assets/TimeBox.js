@@ -5,7 +5,7 @@ export default class TimeBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            count: 20,
+            count: 30,
             timerInterval: '',
 
         };
@@ -20,7 +20,7 @@ export default class TimeBox extends Component {
         if (prevProps != this.props) {
             if (this.props.round != prevProps.round) {
                 this.setState({
-                    count: 20 - ((this.props.clue - 1) * 5)
+                    count: 30
                 })
                 clearInterval(this.state.timeInterval);
                 this.startCountDown();
@@ -60,8 +60,8 @@ export default class TimeBox extends Component {
     render() {
         return (
             <div className='col-12'>
-                <h1 style={{display: 'inline-block'}}>Round: {this.props.round}  </h1>
-                <h1 style={{display: 'inline-block', marginLeft:'20px'}}>Time for Clue: {this.state.count}</h1>
+                <h1 style={{display: 'inline-block'}}>Question: {this.props.round}/10 </h1>
+                <h1 style={{display: 'inline-block', marginLeft:'20px'}}>Time for Question: {this.state.count}</h1>
             </div>
 
         )

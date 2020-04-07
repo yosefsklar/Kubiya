@@ -7,6 +7,26 @@ import classes from '../styles/MatchingRound.module.css'
 import Parser from "./classes/Parser";
 import {BtnAnswer, BtnSmall} from "./assets/buttons";
 
+const tanakhDE = require('./dicts/tanakh_easy.json')
+const mishnahDE = require('./dicts/mishnah_easy.json')
+const talmudDE = require('./dicts/talmud_easy.json')
+const tanakhDM = require('./dicts/tanakh_medium.json')
+const mishnahDM = require('./dicts/mishnah_medium.json')
+const talmudDM = require('./dicts/talmud_medium_stop_words.json')
+
+const dictFinder = {
+    easy: {
+        tanakh: tanakhDE,
+        mishnah: mishnahDE,
+        talmud: talmudDE
+    },
+    medium: {
+        tanakh: tanakhDM,
+        mishnah: mishnahDM,
+        talmud: talmudDM
+    }
+}
+
 const P = new Parser();
 
 
@@ -21,9 +41,7 @@ export default class MatchingRound extends Component {
             //then functionally get the context
             textInfos: [],
             labels: [],
-            round: 0,
             clue: 1,
-            answerInform: false,
             answeredCorrectly: false,
             correctAnswer: '',
             addedPoints: 0,
@@ -44,7 +62,7 @@ export default class MatchingRound extends Component {
         for (let i = 0; i < copyInfoArray.length; i++) {
             singleTextInfoArray.push(correctAnswer);
         }
-        Promise.all(singleTextInfoArray.map(textName => {
+        Promise.all(singleTextInfoArray.map((textName, index) => {
             let subtextNumber = this.chooseRandomSubtext(textName,TextChapters[this.props.text]);
             console.log(textName + ' . ' + subtextNumber);
             let fetchString = 'http://www.sefaria.org/api/texts/' + textName + '.' + subtextNumber;
@@ -53,7 +71,7 @@ export default class MatchingRound extends Component {
                     return response.json();
                 }).then((data) => {
                     data['text'] = P.cleanText(data.text);
-                    let vn = this.chooseRandomVerse(data.text);
+                    let vn = this.chooseRandomVerse(data.he,textName,index);
                     return(new TextInfo(data.indexTitle, data.heTitle,vn,subtextNumber, data.he, data.text));
                 });
         })).then(values => {
@@ -114,7 +132,6 @@ export default class MatchingRound extends Component {
             labelTextNames : this.labelTextNames,
             clue: 1,
             answeredCorrectly: correct,
-            answerInform : true,
             correctAnswer: correctAnswer,
             addedPoints: score
         }, () => {
@@ -128,11 +145,8 @@ export default class MatchingRound extends Component {
     correctAnswerShow = () =>{
 
         let timer = setInterval( () => {
-            this.setState({
-                answerInform : false,
-                round : this.state.round + 1,
-            });
             clearInterval(timer);
+            this.props.setAnswerInformer(false);
         },3000)
 
     }
@@ -171,9 +185,71 @@ export default class MatchingRound extends Component {
         return num;
     }
 
-    chooseRandomVerse(textArr){
-        return Math.floor(Math.random() * textArr.length);
+    chooseRandomVerse(textArr,textName,index){
+        //identify clue difficulty, clue number and difficulty
+        //need to also not reuse verse -- keep track of in game
+        let level = this.getClueDifficulty(index);
+        let candidateVerse = Math.floor(Math.random() * textArr.length);
+        let valid = false
+        let candidateText =  textArr[candidateVerse];
+        for(let i = candidateVerse; i < textArr.length && valid == false; i++){
+            console.log("Looping...")
+            candidateText = textArr[i % textArr.length];
+            let candidateArr = this.stripVowels(candidateText).split(' ');
+            if(level == 'hard'){
+                let wordBlackList = dictFinder['easy'][this.props.text][textName];
+                if(!candidateArr.some(w=> wordBlackList.indexOf(w) >= 0)){
+                    valid = true;
+                    console.log("Found a match!")
+                    candidateVerse = i % textArr.length;
+                }
+            }
+            else{
+                let wordList = [];
+                if(level == 'easy'){
+                    wordList = dictFinder[level][this.props.text][textName];
+                }
+                else if(level == 'medium'){
+                    wordList = dictFinder[level][this.props.text][textName]['unigrams'];
+                }
+
+                console.log(wordList)
+                console.log(this.stripVowels(candidateText))
+                if(candidateArr.some(w=> wordList.indexOf(w) >= 0)){
+                    valid = true;
+                    console.log("Found a match!")
+                    candidateVerse = i % textArr.length;
+                }
+            }
+
+        }
+        return candidateVerse;
     }
+
+    getClueDifficulty(index){
+        switch(this.props.level) {
+            case 'easy':
+                return('easy');
+                break;
+            case 'medium':
+            case 'hard':
+                if(index == 0){
+                    return 'hard';
+                }
+                else if(index == 1){
+                    return 'medium';
+                }
+                else{
+                    return 'easy';
+                }
+                break;
+        }
+    }
+
+    stripVowels(rawString) {
+        return rawString.replace(/[\u0591-\u05C7]/g,"")
+    }
+
 
     hashcode (str) {
         var hash = 0, i, chr;
@@ -221,7 +297,7 @@ render(){
             }
         }
         let answerInform = '';
-        if(this.state.answerInform){
+        if(this.props.answerInform){
             answerInform = <AnswerInformer correct={this.state.answeredCorrectly} answer={this.state.correctAnswer} addedPoints={this.state.addedPoints} lang={this.props.lang} text={this.props.text}/>
         }
         // console.log("the final arrays")
@@ -231,20 +307,20 @@ render(){
     return (
         <div className={'container ' + classes.GameDesk}>
             <h1>Match the Verse to the Correct Text</h1>
-
+            <h2>{this.props.level}</h2>
                 <div className={classes.TextRow}>
                     <div className={'row '}>
-                        {this.state.answerInform ? answerInform : textCompArray}
-                        {!this.state.answerInform && nextClue}
+                        {this.props.answerInform ? answerInform : textCompArray}
+                        {!this.props.answerInform && nextClue}
                 </div>
                 </div>
 
             <div className='row'>
-                {this.state.answerInform ? <p></p> : labelCompArray}
+                {this.props.answerInform ? <p></p> : labelCompArray}
             </div>
             <ScoreBoard score={this.props.score}/>
-            {this.state.answerInform ?
-                <p></p> : <TimeBox round={this.state.round} style={{display: 'inline'}} resetRoundHandler={this.resetRoundHandler} resetClue={this.resetClue}/>}
+            {this.props.answerInform ?
+                <p></p> : <TimeBox round={this.props.round} style={{display: 'inline'}} resetRoundHandler={this.resetRoundHandler} resetClue={this.resetClue}/>}
 
         </div>
     )};

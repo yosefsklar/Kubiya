@@ -8,7 +8,7 @@ const AnswerInformer = (props) => {
     let correct = <p className={colorClass}> {props.correct ? 'Correct!' : 'Incorrect'}</p>;
     let points = <p>+{props.addedPoints}  </p>;
     let beforeContext ='';
-    let contextRange = {tanakh: 3, mishnah: 1, talmud: 2}[props.text]
+    let contextRange = {hebrew: {tanakh: 3, mishnah: 1, talmud: 2},english: {tanakh: 3, mishnah: 1, talmud: 1}}[props.lang][props.text]
     for(let i = props.answer.verseNumber - contextRange; i < props.answer.verseNumber; i++){
         if(i >=0){
             if(props.lang == 'hebrew'){
@@ -36,8 +36,10 @@ const AnswerInformer = (props) => {
     let answerContext = <p>{beforeContext}{answerText}{afterContext}</p>;
     return(
         <div className={classes.AnswerInformer}>
-            {correct}
-            {props.correct ? points : answer}
+            <div className={classes.Header}>
+                {correct}
+                {props.correct ? points : answer}
+            </div>
             <div className={classes.Context}>
                 <p className={classes.Title }>{props.answer.textNameHebrew + " " + props.answer.chapter + ":" + (props.answer.verseNumber + 1)} </p>
                 <p className={langClass}>{answerContext }</p>

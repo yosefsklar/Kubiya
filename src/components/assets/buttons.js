@@ -22,7 +22,7 @@ export const BtnAnswer= (props) => {
 
     return (
         <div className={'col-sm '}>
-            <button className={classes.Btn + ' ' + classes.Answer} onClick={() => props.resetRoundHandler((props.label.correct ? (4 - props.clue) * 100 : 0), props.correct)} >
+            <button className={classes.Btn + ' ' + classes.Answer} onClick={() => props.resetRoundHandler((props.label.correct ? (4 - props.clue) * 100 : 0), props.label.correct)} >
                 <p>{props.label.textNameHebrew}</p>
                 <p>{props.label.textNameEnglish}</p>
             </button>
