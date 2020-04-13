@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="adcf82e9-6b07-45a1-98ee-c89add9c4ba4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/dicts/tanakh_book_groups.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/dicts/tanakh_groups.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/dicts/tanakh_names.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MatchingRound.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MatchingRound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/assets/footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/assets/footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dicts/tanakh_easy.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dicts/tanakh_easy.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TextBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TextBox.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.31351793">
+    <splitter split-orientation="horizontal" split-proportion="0.14139694">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -106,11 +100,23 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/MatchingRound.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="341">
-                  <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
+                <state relative-caret-position="127">
+                  <caret line="262" column="28" lean-forward="true" selection-start-line="262" selection-end-line="264" selection-end-column="5" />
+                  <folding>
+                    <element signature="e#0#39#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/components/TextBox.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="209">
+                  <caret line="14" column="90" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -132,9 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>TimeB</find>
-      <find>anakh</find>
-      <find>this.props</find>
       <find>this.props.text</find>
       <find>configs</find>
       <find>Lang</find>
@@ -162,6 +165,9 @@
       <find>רחל</find>
       <find>Son</find>
       <find>props.set</find>
+      <find>get</find>
+      <find>ifficulty</find>
+      <find>hard</find>
     </findStrings>
     <replaceStrings>
       <replace>//console.log</replace>
@@ -217,7 +223,6 @@
         <option value="$PROJECT_DIR$/src/styles/MatchingRound.module.css" />
         <option value="$PROJECT_DIR$/src/styles/TextBox.module.css" />
         <option value="$PROJECT_DIR$/src/components/GameLang.js" />
-        <option value="$PROJECT_DIR$/src/components/TextBox.js" />
         <option value="$PROJECT_DIR$/src/components/classes/Parser.js" />
         <option value="$PROJECT_DIR$/src/components/assets/TimeBox.js" />
         <option value="$PROJECT_DIR$/src/styles/AnswerInformer.module.css" />
@@ -233,13 +238,13 @@
         <option value="$PROJECT_DIR$/src/components/dicts/tanakh_groups.json" />
         <option value="$PROJECT_DIR$/src/components/dicts/tanakh_book_groups.json" />
         <option value="$PROJECT_DIR$/src/components/MatchingRound.js" />
+        <option value="$PROJECT_DIR$/src/components/TextBox.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="949" />
-    <option name="y" value="-11" />
-    <option name="width" value="983" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="333" />
+    <option name="width" value="1598" />
     <option name="height" value="1043" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -346,18 +351,18 @@
       <workItem from="1585063990441" duration="7940000" />
       <workItem from="1585085063931" duration="48424000" />
       <workItem from="1586191270063" duration="19062000" />
-      <workItem from="1586271598157" duration="22910000" />
+      <workItem from="1586271598157" duration="28386000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172112000" />
+    <option name="totallyTimeSpent" value="177588000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <frame x="222" y="0" width="1065" height="695" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.023847377" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.02918288" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -615,16 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TextBox.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ScoreBoard.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -746,8 +741,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/MatchingRound.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
+        <state relative-caret-position="127">
+          <caret line="262" column="28" lean-forward="true" selection-start-line="262" selection-end-line="264" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TextBox.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="14" column="90" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

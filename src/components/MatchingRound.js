@@ -73,8 +73,8 @@ export default class MatchingRound extends Component {
                     return response.json();
                 }).then((data) => {
                     data['text'] = P.cleanText(data.text);
-                    let vn = this.chooseRandomVerse(data.he,textName,index);
-                    return(new TextInfo(data.indexTitle, data.heTitle,vn,subtextNumber, data.he, data.text));
+                    let [vn,names] = this.chooseRandomVerse(data.he,textName,index);
+                    return(new TextInfo(data.indexTitle, data.heTitle,vn,subtextNumber, data.he, data.text, names));
                 });
         })).then(values => {
             console.log("Text Values");
@@ -116,6 +116,7 @@ export default class MatchingRound extends Component {
         let newUserTexts = [];
 
         let index = Math.floor(Math.random() * textOptions.length);
+        let correctText = textOptions[index];
         newUserTexts.push(textOptions[index]);
         textOptions.splice(index,1);
         if(level == 'hard'){
@@ -124,13 +125,11 @@ export default class MatchingRound extends Component {
         }
 
         for (let i = 1; i < num; i++) {
-            index = Math.floor(Math.random() * textOptions.length);
+            do {
+                index = Math.floor(Math.random() * textOptions.length);
+            }while(textOptions[index] == correctText)
             newUserTexts.push(textOptions[index]);
-            textOptions.splice(index,1);
-            if(newUserTexts[i] == newUserTexts[0]){
-                i--;
-            }
-            //if the decoy is the same as the answer
+            textOptions.splice(index, 1);
         }
         console.log("Pre-Selected " + newUserTexts);
         return newUserTexts;
@@ -202,7 +201,8 @@ export default class MatchingRound extends Component {
     chooseRandomVerse(textArr,textName,index){
         //identify clue difficulty, clue number and difficulty
         //need to also not reuse verse -- keep track of in game
-        let level = this.getClueDifficulty(index);
+        let level = this.getClueDifficulty(index)[0];
+        let names = this.getClueDifficulty(index)[1] == 'names';
         let candidateVerse = Math.floor(Math.random() * textArr.length);
         let valid = false
         let candidateText =  textArr[candidateVerse];
@@ -237,24 +237,24 @@ export default class MatchingRound extends Component {
             }
 
         }
-        return candidateVerse;
+        return [candidateVerse,names];
     }
 
     getClueDifficulty(index){
         switch(this.props.level) {
             case 'easy':
-                return('easy');
+                return ['easy',"names"];
                 break;
             case 'medium':
             case 'hard':
                 if(index == 0){
-                    return 'hard';
+                    return ['hard','blank'];
                 }
                 else if(index == 1){
-                    return 'medium';
+                    return ['medium','blank'];
                 }
                 else{
-                    return 'easy';
+                    return ['easy',"names"];
                 }
                 break;
         }
@@ -341,13 +341,14 @@ render(){
 }
 
 class TextInfo {
-    constructor(textNameEnglish,textNameHebrew,verseNumber,chapter,textHebrew,textEnglish){
+    constructor(textNameEnglish,textNameHebrew,verseNumber,chapter,textHebrew,textEnglish,names){
         this.textNameEnglish = textNameEnglish;
         this.textNameHebrew = textNameHebrew;
         this.verseNumber = verseNumber;
         this.chapter = chapter;
         this.textHebrew = textHebrew;
         this.textEnglish = textEnglish;
+        this.names = names;
     }
 }
 
