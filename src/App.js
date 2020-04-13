@@ -6,7 +6,6 @@ import AboutPage from './components/pages/AboutPage'
 import './App.css';
 import Navbar from "./components/assets/SiteNavBar";
 
-
 function App() {
   return (
     <div className="App">

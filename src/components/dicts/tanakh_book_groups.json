@@ -1,0 +1,115 @@
+{
+  "Amos": ["Prophets","FirstTemple"
+  ],
+  "Daniel": [ "Aramaic","Diaspora"
+  ],
+  "Deuteronomy": [
+    "Moses","Legal","Pentateuch","Josianic"
+  ],
+  "Ecclesiastes": [
+    "Wisdom"
+  ],
+  "Esther": [
+    "Diaspora",  "Narrative"
+  ],
+  "Exodus": [
+    "Moses", "Pentateuch","Legal"
+  ],
+  "Ezekiel": [
+    "Legal","Prophets","SecondTemple"
+  ],
+  "Ezra": [
+    "Aramaic","Diaspora"
+  ],
+  "Genesis": [
+    "Pentateuch","Narrative"
+  ],
+  "Habakkuk": ["FirstTemple","Prophets"
+  ],
+  "Haggai": [
+    "Prophets","SecondTemple"
+  ],
+  "Hosea": [
+    "Prophets","SecondTemple"
+  ],
+  "II_Chronicles": [
+    "FirstTemple","Kings","Josianic"
+  ],
+  "II_Kings": [
+    "Josianic","Kings"
+  ],
+  "II_Samuel": [
+    "David","Narrative"
+  ],
+  "I_Chronicles": [
+    "David","Kings","FirstTemple"
+  ],
+  "I_Kings": [
+    "Kings","David",  "FirstTemple"
+  ],
+  "I_Samuel": [
+    "David","Narrative","I_Samuel"
+  ],
+  "Isaiah": [
+    "Prophets","FirstTemple","Kings","Prophets"
+  ],
+  "Jeremiah": [
+    "Prophets","Josianic","FirstTemple"
+  ],
+  "Job": [
+    "Poetry","Wisdom"
+  ],
+  "Joel": [
+    "Prophets","FirstTemple"
+  ],
+  "Jonah": [
+    "FirstTemple"
+  ],
+  "Joshua": [
+    "Prophets","Narrative"
+  ],
+  "Judges": [
+    "Canaan","Narrative"
+  ],
+  "Lamentations": ["Poetry",  "FirstTemple"
+  ],
+  "Leviticus": [
+    "Moses","Legal","Priest"
+  ],
+  "Malachi": [
+    "SecondTemple","Prophets","Patriarchs"
+  ],
+  "Micah": [
+    "FirstTemple","Prophets"
+  ],
+  "Nahum": [
+    "FirstTemple","Prophets"
+  ],
+  "Nehemiah": [
+    "Diaspora","Aramaic","SecondTemple"
+  ],
+  "Numbers": [
+    "Moses","Legal","Priest"
+  ],
+  "Obadiah": [
+    "FirstTemple","Patriarchs","Prophets"
+  ],
+  "Proverbs": [
+    "Wisdom"
+  ],
+  "Psalms": [
+    "Poetry"
+  ],
+  "Ruth": [
+    "Canaan","Narrative"
+  ],
+  "Song_of_Songs": [
+    "Poetry","Wisdom"
+  ],
+  "Zechariah": [
+    "SecondTemple","Prophets"
+  ],
+  "Zephaniah": [
+    "Prophets","FirstTemple"
+  ]
+}

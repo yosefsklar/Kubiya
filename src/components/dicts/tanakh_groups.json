@@ -1,0 +1,142 @@
+{
+  "Narrative": [
+    "Ruth",
+    "Nehemiah",
+    "Judges",
+    "Joshua",
+    "Jonah",
+    "I_Samuel",
+    "I_Kings",
+    "I_Chronicles",
+    "II_Samuel",
+    "Daniel",
+    "Esther",
+    "Exodus",
+    "Ezra",
+    "Genesis",
+    "II_Chronicles"
+  ],
+  "Moses": [
+    "Leviticus",
+    "Joshua",
+    "Exodus",
+    "Numbers"
+  ],
+  "David": [
+    "I_Samuel",
+    "I_Kings",
+    "I_Chronicles",
+    "II_Samuel",
+    "II_Chronicles",
+    "II_Kings"
+  ],
+  "Legal": [
+    "Leviticus",
+    "Deuteronomy",
+    "Exodus",
+    "Ezekiel",
+    "Numbers"
+  ],
+  "Pentateuch": [
+    "Leviticus",
+    "Deuteronomy",
+    "Exodus",
+    "Genesis"
+  ],
+  "Priest": [
+    "Exodus",
+    "Numbers",
+    "Leviticus"
+  ],
+  "Poetry": [
+    "Lamentations",
+    "Job",
+    "Isaiah",
+    "Psalms",
+    "Jeremiah",
+    "Song_of_Songs"
+  ],
+  "Wisdom": [
+    "Proverbs",
+    "Job",
+    "Ecclesiastes",
+    "Song_of_Songs"
+  ],
+  "Kings": [
+    "Jeremiah",
+    "Isaiah",
+    "I_Kings",
+    "I_Chronicles",
+    "II_Chronicles",
+    "II_Kings"
+  ],
+  "Josianic": [
+    "Jeremiah",
+    "Deuteronomy",
+    "II_Chronicles",
+    "II_Kings"
+  ],
+  "Patriarchs": [
+    "Genesis",
+    "Obadiah",
+    "Malachi"
+  ],
+  "Prophets": [
+    "Zephaniah",
+    "Zechariah",
+    "Obadiah",
+    "Nahum",
+    "Micah",
+    "Malachi",
+    "Jonah",
+    "Joel",
+    "Jeremiah",
+    "Isaiah",
+    "Amos",
+    "Ezekiel",
+    "Habakkuk",
+    "Haggai",
+    "Hosea"
+  ],
+  "FirstTemple": [
+    "Lamentations",
+    "Zephaniah",
+    "Obadiah",
+    "Nahum",
+    "Micah",
+    "Joel",
+    "Jeremiah",
+    "Isaiah",
+    "I_Kings",
+    "I_Chronicles",
+    "Amos",
+    "Habakkuk",
+    "Hosea"
+  ],
+  "SecondTemple": [
+    "Zechariah",
+    "Malachi",
+    "Ezekiel",
+    "Ezra",
+    "Haggai",
+    "Nehemiah"
+  ],
+  "Diaspora": [
+    "Daniel",
+    "Esther",
+    "Ezra",
+    "Nehemiah"
+  ],
+  "Aramaic": [
+    "Daniel",
+    "Ezra",
+    "Nehemiah"
+  ],
+  "Canaan": [
+    "Joshua",
+    "Deuteronomy",
+    "Judges",
+    "I_Samuel",
+    "Ruth"
+  ]
+}

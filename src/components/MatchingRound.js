@@ -13,6 +13,8 @@ const talmudDE = require('./dicts/talmud_easy.json')
 const tanakhDM = require('./dicts/tanakh_medium.json')
 const mishnahDM = require('./dicts/mishnah_medium.json')
 const talmudDM = require('./dicts/talmud_medium_stop_words.json')
+const tanakhBG = require('./dicts/tanakh_book_groups.json')
+const tanakhG = require('./dicts/tanakh_groups.json')
 
 const dictFinder = {
     easy: {
@@ -33,7 +35,7 @@ const P = new Parser();
 export default class MatchingRound extends Component {
     constructor(props) {
         super(props);
-        let labelTextNames = this.selectRandomTexts(3, TextChapters[this.props.text]);
+        let labelTextNames = this.selectRandomTexts(3, TextChapters[this.props.text],this.props.level);
         this.state = {
             labelTextNames: labelTextNames,
             //chapters
@@ -87,7 +89,6 @@ export default class MatchingRound extends Component {
 
     getLabels(textInfoArray){
         let copyInfoArray = [...textInfoArray];
-        let labels = [];
         Promise.all(copyInfoArray.map(textName => {
             let fetchString = 'http://www.sefaria.org/api/texts/' + textName;
             return fetch(fetchString)
@@ -109,14 +110,27 @@ export default class MatchingRound extends Component {
         });
     }
 
-    selectRandomTexts(num, textArr){
+    selectRandomTexts(num, textArr, level){
         let texts = Object.keys(textArr);
-        let copyArr = [...texts]
+        let textOptions = [...texts]
         let newUserTexts = [];
-        for (let i = 0; i < num; i++) {
-            let index = Math.floor(Math.random() * copyArr.length);
-            newUserTexts.push(copyArr[index]);
-            copyArr.splice(index,1)
+
+        let index = Math.floor(Math.random() * textOptions.length);
+        newUserTexts.push(textOptions[index]);
+        textOptions.splice(index,1);
+        if(level == 'hard'){
+            let textGroupName = tanakhBG[newUserTexts[0]][Math.floor(Math.random() * tanakhBG[newUserTexts[0]].length)];
+            textOptions = tanakhG[textGroupName];
+        }
+
+        for (let i = 1; i < num; i++) {
+            index = Math.floor(Math.random() * textOptions.length);
+            newUserTexts.push(textOptions[index]);
+            textOptions.splice(index,1);
+            if(newUserTexts[i] == newUserTexts[0]){
+                i--;
+            }
+            //if the decoy is the same as the answer
         }
         console.log("Pre-Selected " + newUserTexts);
         return newUserTexts;
