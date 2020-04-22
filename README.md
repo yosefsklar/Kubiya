@@ -1,3 +1,3 @@
 ### Deployment
-# Kubiah קוביא
+# Kubiya קוביא
 A gaming center revolving around Jewish Texts
