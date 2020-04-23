@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Kubya/static/css/main.4460f94a.chunk.css",
-    "main.js": "/Kubya/static/js/main.7f29e093.chunk.js",
-    "main.js.map": "/Kubya/static/js/main.7f29e093.chunk.js.map",
+    "main.css": "/Kubya/static/css/main.1cb3e66e.chunk.css",
+    "main.js": "/Kubya/static/js/main.6965e998.chunk.js",
+    "main.js.map": "/Kubya/static/js/main.6965e998.chunk.js.map",
     "runtime-main.js": "/Kubya/static/js/runtime-main.2228c130.js",
     "runtime-main.js.map": "/Kubya/static/js/runtime-main.2228c130.js.map",
-    "static/js/2.6831cd9c.chunk.js": "/Kubya/static/js/2.6831cd9c.chunk.js",
-    "static/js/2.6831cd9c.chunk.js.map": "/Kubya/static/js/2.6831cd9c.chunk.js.map",
+    "static/js/2.17047f81.chunk.js": "/Kubya/static/js/2.17047f81.chunk.js",
+    "static/js/2.17047f81.chunk.js.map": "/Kubya/static/js/2.17047f81.chunk.js.map",
     "index.html": "/Kubya/index.html",
-    "precache-manifest.5f57aa66c00672cae66f6f25edea0944.js": "/Kubya/precache-manifest.5f57aa66c00672cae66f6f25edea0944.js",
+    "precache-manifest.386178d6b20ee0457ef8384f16e46d2a.js": "/Kubya/precache-manifest.386178d6b20ee0457ef8384f16e46d2a.js",
     "service-worker.js": "/Kubya/service-worker.js",
-    "static/css/main.4460f94a.chunk.css.map": "/Kubya/static/css/main.4460f94a.chunk.css.map",
-    "static/js/2.6831cd9c.chunk.js.LICENSE.txt": "/Kubya/static/js/2.6831cd9c.chunk.js.LICENSE.txt"
+    "static/css/main.1cb3e66e.chunk.css.map": "/Kubya/static/css/main.1cb3e66e.chunk.css.map",
+    "static/js/2.17047f81.chunk.js.LICENSE.txt": "/Kubya/static/js/2.17047f81.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2228c130.js",
-    "static/js/2.6831cd9c.chunk.js",
-    "static/css/main.4460f94a.chunk.css",
-    "static/js/main.7f29e093.chunk.js"
+    "static/js/2.17047f81.chunk.js",
+    "static/css/main.1cb3e66e.chunk.css",
+    "static/js/main.6965e998.chunk.js"
   ]
 }
