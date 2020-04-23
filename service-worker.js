@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Kubya/precache-manifest.f8151c551f8ac1ab24763544236c88dd.js"
+  "/Kubya/precache-manifest.5f57aa66c00672cae66f6f25edea0944.js"
 );
 
 self.addEventListener('message', (event) => {
