@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Kubya/static/css/main.1cb3e66e.chunk.css",
-    "main.js": "/Kubya/static/js/main.6965e998.chunk.js",
-    "main.js.map": "/Kubya/static/js/main.6965e998.chunk.js.map",
+    "main.js": "/Kubya/static/js/main.d64f6986.chunk.js",
+    "main.js.map": "/Kubya/static/js/main.d64f6986.chunk.js.map",
     "runtime-main.js": "/Kubya/static/js/runtime-main.2228c130.js",
     "runtime-main.js.map": "/Kubya/static/js/runtime-main.2228c130.js.map",
     "static/js/2.17047f81.chunk.js": "/Kubya/static/js/2.17047f81.chunk.js",
     "static/js/2.17047f81.chunk.js.map": "/Kubya/static/js/2.17047f81.chunk.js.map",
     "index.html": "/Kubya/index.html",
-    "precache-manifest.386178d6b20ee0457ef8384f16e46d2a.js": "/Kubya/precache-manifest.386178d6b20ee0457ef8384f16e46d2a.js",
+    "precache-manifest.e351424a19ce3cb6a6d8cf300a29a4ad.js": "/Kubya/precache-manifest.e351424a19ce3cb6a6d8cf300a29a4ad.js",
     "service-worker.js": "/Kubya/service-worker.js",
     "static/css/main.1cb3e66e.chunk.css.map": "/Kubya/static/css/main.1cb3e66e.chunk.css.map",
     "static/js/2.17047f81.chunk.js.LICENSE.txt": "/Kubya/static/js/2.17047f81.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.2228c130.js",
     "static/js/2.17047f81.chunk.js",
     "static/css/main.1cb3e66e.chunk.css",
-    "static/js/main.6965e998.chunk.js"
+    "static/js/main.d64f6986.chunk.js"
   ]
 }
